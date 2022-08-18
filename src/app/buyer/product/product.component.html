@@ -1,0 +1,79 @@
+<div class="container-fluid" style="margin-top: 50px;">
+  <div class="container h-100 mt-4">
+    <!-- <div class="row">
+      <div class="col-10 mx-auto">
+        <h3 style="margin-left: 8px;"><a class="btn btn-link text-dark text-decoration-none" href="">Name of
+            leaderboard</a></h3>
+      </div>
+    </div> -->
+    <div class="row mx-auto">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+        <img ngClass="img-one" *ngIf="imagess.length > 0"
+          [src]="'https://administrator.goodyellowco.com/uploads/'+imagess[0].url" class="img-fluid">
+
+        <div class="row mb-4" *ngIf="imagess.length > 0">
+          <div class="col-6" *ngFor="let item of imagess">
+            <img ngClass="imgs" [src]="'https://administrator.goodyellowco.com/uploads/'+item.url"
+              class="mt-2 img-fluid">
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-5">
+        <h2 class="fs-3 fw-bold heading">{{ product.name }}</h2>
+        <h3 style="margin-top: -14px;"><a class=" text-warning fw-bold text-decoration-none" style="cursor: pointer;"
+            routerLink="/storefront/{{ product.brand }}">
+            {{ product.brand }}</a>
+        </h3>
+        <h2 class="fw-normal">${{ price }}</h2>
+        <h2 class="fw-bold" style="margin-top: -14px;">Current Discount: {{ discount }}% </h2>
+        <h4 class="fw-bold" style="margin-top: -14px;" *ngIf="shipping_cost != '0' || shipping_cost != ''">Shipping:
+          ${{ shipping_cost }}
+        </h4>
+        <h4 class="fw-bold" style="margin-top: -14px;" *ngIf="shipping_cost == '0' || shipping_cost == ''">Shipping is
+          <span class="text-warning fw-bold">Free</span>.
+        </h4>
+        <h1 class="fw-bold">
+          ${{ discount_price }}
+        </h1>
+        <!-- <h3 class="fw-bold">23 Sales</h3>
+        <h3 class="fw-bold" style="margin-top: -14px;">18 Different Customers</h3> -->
+        <h3 *ngIf="product.exclu_discount" style="border-bottom: 4px solid #FFE01D; width: 230px;">Exclusive Good Yellow
+          Discount </h3>
+        <h3 *ngIf="product.exclus_product" style="margin-top: -14px; border-bottom: 4px solid #FFE01D; width: 200px;">
+          Exclusively On Good Yellow</h3>
+
+        <div class="mt-4">
+          <select [(ngModel)]="qtd[item.key]" style="width: 60%;" class="form-control mb-2"
+            *ngFor="let item of attributes; let i = index" (ngModelChange)="var_chng()">
+            <option value="">{{ item.key }}</option>
+            <option *ngFor="let data of item.value">{{ data }}</option>
+          </select>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-5">
+            <label>Quantity:</label>
+            <input [disabled]="disabled" type="number" class="form-control" placeholder="Choose Quantity"
+              [(ngModel)]="quantity">
+          </div>
+          <div class="col-12">
+            <div class="d-grid gap-2 col-4">
+              <button [disabled]="disabled" (click)="addtocart()" type="button" class="btn btn-warning mt-3">Add To
+                Cart</button>
+            </div>
+
+          </div>
+        </div>
+        <p style="text-decoration: underline; margin-top: 30px;">Important Details</p>
+        <p class="mt-3">
+          {{ product.important_details }}
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>

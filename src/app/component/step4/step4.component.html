@@ -1,0 +1,77 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <div class="flex-small-text">
+            <p class="text-danger fs-6 fw-bold text-center mt-2 mb-4 small-text" *ngIf="!storefront">
+              If you would like to stop and continue later, you can do so at any time. The sign up process auto saves
+              every second. Simply come back and login and continue where you left off.
+            </p>
+          </div>
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Photos Of The Brand</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 320px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
+              Please upload up to 10 quality photos of your Brand. This can be photos of your products, photos from your
+              website, graphical portions of your websites and more.
+
+            </p>
+
+            <p class="text-dark fs-5 fw-bold text-center HeroNew text-primary">
+              ⭐ Photo should be less than 1MB.
+            </p>
+          </div>
+
+
+          <button (click)="fileInputMain.click()" type="button" class="img_btn mt-4">&nbsp; Photos Of The Brand</button>
+          <input #fileInputMain type="file" hidden (change)="doFileInput($event)">
+
+
+
+          <p><img *ngIf="photos_of_brand" [src]="'data:image/png;base64,'+photos_of_brand" class="mt-2"
+              style="width: 100px; height: 100px; object-fit: contain;"></p>
+
+          <button [disabled]="disabled" (click)="add_more()" type="button" class="btn btn-warning mt-2">Add
+            More</button>
+
+          <hr />
+
+          <div class="row mt-3 brand_images">
+            <div *ngFor="let item of photos" class="col-md-3">
+              <img [src]="'https://administrator.goodyellowco.com/uploads/' + item.url" />
+            </div>
+          </div>
+
+
+
+          <div class="row mt-4 mb-4" *ngIf="!storefront">
+            <div class="col-6">
+              <a routerLink="/vendor-signup-photos" class="btn btn-warning mt-3">Back</a>
+            </div>
+            <div class="col-6">
+              <button [disabled]="disabled" (click)="next()" style="float: right;" type="button"
+                class="btn btn-warning mt-3">Next</button>
+            </div>
+          </div>
+
+          <div class="row mb-4" *ngIf="storefront">
+
+            <div class="col-md-12">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3 btn-lg">Return To Storefront</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

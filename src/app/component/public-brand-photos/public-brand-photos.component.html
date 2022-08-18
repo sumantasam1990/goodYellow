@@ -1,0 +1,28 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">The Brand Photos</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 250px; margin: 0 auto;"></div>
+
+
+          <div class="row mt-5 text-center">
+            <div class="col-md-6 brand_images" *ngFor="let item of data">
+              <a target="_blank" [href]="'https://administrator.goodyellowco.com/uploads/'+item.url"><img
+                  [src]="'https://administrator.goodyellowco.com/uploads/'+item.url" class="img-fluid" /></a>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <a routerLink="/vendor-storefront" class="btn btn-warning me-md-2" type="button">Return To Storefront</a>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

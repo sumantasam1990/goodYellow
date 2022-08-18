@@ -1,0 +1,70 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-2 heading">Create Product Options (Optional)</h1>
+
+          <div style="border-bottom: 5px solid #FFE01D; width: 85%; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-6 fw-bold text-center mt-4 mb-4 HeroNew">
+              Add your Product Options. For eg. Size (S,M,L), Color (Red, Green).
+            </p>
+          </div>
+
+
+
+          <div class="form-group mt-3">
+            <select [(ngModel)]="key" class="form-control">
+              <option value="">Select product option</option>
+              <option>Size</option>
+              <option>Color</option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group mt-3">
+            <input [(ngModel)]="value" type="text" class="form-control"
+              placeholder="Add variations for the above product option. (i.e. different sizes and colors).">
+            <p class="fw-bold text-danger fs-6 mt-2">Comma(,) seperated values. For eg. M,L,XL</p>
+          </div>
+
+          <button [disabled]="disabled" (click)="add_more()" type="button" class="btn btn-warning btn-lg mt-3">
+            Add More</button>
+
+
+          <table class="table table-striped table-bordered mt-3">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of attrs">
+                <td>{{ item.key }}</td>
+                <td>{{ item.value }}</td>
+                <td><a (click)="delete(item.id)" class="btn btn-link text-danger fs-6">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <a routerLink="/create-product-image-upload/{{ productid }}" class="btn btn-warning btn-lg"> Back</a>
+            <button [disabled]="disabled" (click)="next()" type="button" class="btn btn-warning btn-lg">
+              Next</button>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

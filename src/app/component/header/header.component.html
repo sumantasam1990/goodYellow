@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-5 text-dark" routerLink="/">
+      <img src="../../../assets/logo.png">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+
+        <li class="nav-item">
+          <a routerLink="/all/brands" class="nav-link">All Storefronts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/discover/brands">Discover Brands</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link active" routerLink="/leaderboards/Brand">Brands</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/leaderboards/Causes">Causes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/leaderboards/Good for planet">Good For The Planet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/leaderboards/Good for people">Good For People</a>
+        </li> -->
+
+        <li class="nav-item">
+          <a routerLink="/vendor-storefront" class="nav-link">My Storefront</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/vendor-orders">My Orders</a>
+        </li>
+
+
+        <!-- <li class="nav-item">
+          <a class="nav-link active" routerLink="/u/cart">Cart</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/u/my/account">My Account</a></li>
+            <li><a class="dropdown-item" routerLink="/u/change/password">Change Password</a></li>
+            <li><a class="dropdown-item" routerLink="/u/change/membership/details">Change Membership Details</a></li>
+            <li><a class="dropdown-item" routerLink="/u/my/orders">My Order History</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li> -->
+
+
+
+
+
+        <li class="nav-item" *ngIf="changeHeader">
+          <a (click)="signout()" class="btn btn-secondary">Sign Out</a>
+        </li>
+        <li class="nav-item" *ngIf="!changeHeader">
+          <a (click)="signin()" class="btn btn-secondary">Sign In</a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a routerLink="/u/login" class="btn btn-secondary">Sign In</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a routerLink="/u/signup" class="btn btn-secondary">Sign Up</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

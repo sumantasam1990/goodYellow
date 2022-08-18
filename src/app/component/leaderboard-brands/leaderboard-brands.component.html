@@ -1,0 +1,137 @@
+<div class="container-fluid lb_brands">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-10 mx-auto p-2 d-flex _logbox">
+        <div class="boxx mt-4">
+          <h4 class="fs-5 fw-bold mb-5">
+            {{ brands[0].leaderboard }}
+          </h4>
+          <h2 class="mb-1">
+            <span class="fw-bold fs-4 heading">The Leaderboard</span>
+            <span class="fs-6">&nbsp; Discover brands who have had the most sales on Good Yellow up to today.</span>
+          </h2>
+          <div style="border-bottom: 5px solid #FFE01D; width: 70%; "></div>
+
+          <div class="row mt-4 mt-4">
+            <div class="col-md-4 loop" *ngFor="let brand of brands">
+              <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}"
+                *ngIf="brand.private === 0">
+                <div class="album">
+
+                  <div class="row">
+                    <div class="col-6" *ngFor="let photo of brand.brand_photos">
+                      <img [src]="'https://administrator.goodyellowco.com/uploads/'+photo.url"
+                        class="img-fluid mb-2 mr-2">
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+
+              <div class="album" *ngIf="brand.private === 1" (click)="private_popup()" style="cursor: pointer;">
+
+                <div class="row">
+                  <div class="col-6" *ngFor="let photo of brand.brand_photos">
+                    <img [src]="'https://administrator.goodyellowco.com/uploads/'+photo.url"
+                      class="img-fluid mb-2 mr-2">
+                  </div>
+                </div>
+
+              </div>
+
+              <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}"
+                *ngIf="brand.private === 0">
+                <h2 class="fw-bold fs-5 mb-2" style="font-family: HeroNewExtraBlack !important;">{{ brand.company }}
+                </h2>
+              </a>
+
+              <a class="text-decoration-none text-dark" (click)="private_popup()" style="cursor: pointer;"
+                *ngIf="brand.private === 1">
+                <h2 class="fw-bold fs-5 mb-2 text-danger" style="font-family: HeroNewExtraBlack !important;">
+                  🔒 Private Storefront
+                </h2>
+              </a>
+
+              <h4 class="fw-bold HeroNew fs-6 mb-1" *ngIf="brand.dummy == '0'">{{ brand.sales }} Sales</h4>
+              <h4 class="fw-bold HeroNew fs-6" *ngIf="brand.dummy == '0'">{{ brand.customers }} Different Customers</h4>
+
+              <!-- <div [ngClass]="{'discount-light-green': brand.discount > 5 && brand.discount < 15}"
+                *ngIf="brand.dummy == '0' && brand.discount > 5 && brand.discount < 15">
+                Highest
+                Discount:
+                {{ brand.discount }}%
+              </div> -->
+
+              <!-- <div [ngClass]="{'discount-light-green-second': brand.discount > 16 && brand.discount < 30}"
+                *ngIf="brand.dummy == '0' && brand.discount > 16 && brand.discount < 30">
+                Highest
+                Discount:
+                {{ brand.discount }}%
+              </div> -->
+
+              <!-- <div [ngClass]="{'discount-dark-green-second': brand.discount > 31 && brand.discount < 50}"
+                *ngIf="brand.dummy == '0' && brand.discount > 31 && brand.discount < 50">
+                Highest
+                Discount:
+                {{ brand.discount }}%
+              </div> -->
+
+              <div [ngClass]="{'discount-dark-green': brand.discount > 50}"
+                *ngIf="brand.dummy == '0' && brand.discount > 50">
+                Highest
+                Discount:
+                {{ brand.discount }}%
+              </div>
+
+
+
+
+
+              <h4 class="fw-bold HeroNew fs-6 mb-1" *ngIf="brand.dummy == '1'">{{ brand.dummy_sales }} Sales</h4>
+              <h4 class="fw-bold HeroNew fs-6" *ngIf="brand.dummy == '1'">{{ brand.dummy_customers }} Different
+                Customers</h4>
+
+              <div [ngClass]="{'discount-light-green': brand.dummy_discount > 5 && brand.dummy_discount < 15}"
+                *ngIf="brand.dummy == '1' && brand.dummy_discount > 5 && brand.dummy_discount < 15">
+                Highest
+                Discount:
+                {{ brand.dummy_discount }}%
+              </div>
+
+              <div [ngClass]="{'discount-light-green-second': brand.dummy_discount > 16 && brand.dummy_discount < 30}"
+                *ngIf="brand.dummy == '1' && brand.dummy_discount > 16 && brand.dummy_discount < 30">
+                Highest
+                Discount:
+                {{ brand.dummy_discount }}%
+              </div>
+
+              <div [ngClass]="{'discount-dark-green-second': brand.dummy_discount > 31 && brand.dummy_discount < 50}"
+                *ngIf="brand.dummy == '1' && brand.dummy_discount > 31 && brand.dummy_discount < 50">
+                Highest
+                Discount:
+                {{ brand.dummy_discount }}%
+              </div>
+
+              <div [ngClass]="{'discount-dark-green': brand.dummy_discount > 50}"
+                *ngIf="brand.dummy == '1' && brand.dummy_discount > 50">
+                Highest
+                Discount:
+                {{ brand.dummy_discount }}%
+              </div>
+
+            </div>
+
+
+
+            <!-- // end loop -->
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

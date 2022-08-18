@@ -1,0 +1,54 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Leaderboards & Leaderboard Lists</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 100%; margin: 0 auto;"></div>
+
+
+          <!-- <div class="flex-small-text">
+            <p class="text-dark fs-6 fw-bold text-center mt-4 mb-4 small-text">
+              These are Leaderboards and Leaderboard Lists in which your brand is a part of. Click on a name to view the
+              Leaderboard or Leaderboard Lists. If the name is in red, that is a Leaderboard List.
+            </p>
+          </div> -->
+
+
+          <ol class="mt-4" *ngIf="leaderboards.length > 0">
+            <li *ngFor="let item of leaderboards">
+              <a class="btn btn-link text-dark" style="text-align: left;"
+                routerLink="/leaderboard/brands/list/{{ item.slug }}">
+                <span class="text-secondary fw-bold fs-6">{{ item.name }} >> </span> {{ item.lb_three_name }}
+              </a></li>
+          </ol>
+
+          <p *ngIf="leaderboards.length == 0" class="fs-5 fw-bold mt-5 text-center text-secondary">Didn't add any
+            leaderboard yet.
+          </p>
+
+
+          <!-- <div class="row mt-4">
+            <div class="col-6">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-signup-create-leaderboard" class="btn btn-warning mt-3">Create New
+                  Leaderboard</a>
+              </div>
+
+            </div>
+            <div class="col-6">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3">Return To Storefront</a>
+              </div>
+
+            </div>
+          </div> -->
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

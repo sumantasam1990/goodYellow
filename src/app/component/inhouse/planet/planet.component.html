@@ -1,0 +1,52 @@
+<p class="fs-4 fw-bold mt-4">Good For The Planet</p>
+<p class="mt-2">
+  <a data-bs-toggle="modal" data-bs-target="#exampleModalPlanet" style="cursor: pointer;"><small
+      class="text-danger">What is
+      this?</small></a>
+</p>
+
+<div class="form-group mt-2">
+  <select class="form-control" [(ngModel)]="b_lb_one" (change)="select_changeOne()">
+    <option value="">Level One</option>
+    <!-- <option value="new_00_one">Add New</option> -->
+    <option *ngFor="let item of dataOne" [value]="item.id">{{ item.lb_name }}</option>
+  </select>
+</div>
+
+<div class="form-group mt-2">
+  <select class="form-control" [(ngModel)]="b_lb_two" (change)="select_changeTwo()">
+    <option value="">Level Two</option>
+    <option value="new_00_two">Add New</option>
+    <option *ngFor="let item of dataTwo" [value]="item.id">{{ item.lb_two_name }}</option>
+  </select>
+</div>
+
+<div class="form-group mt-2">
+  <select class="form-control" [(ngModel)]="b_lb_three" (change)="select_changeThree()">
+    <option value="">Level Three</option>
+    <option value="new_00_three">Add New</option>
+    <option *ngFor="let item of dataThree" [value]="item.lb_three_name" [selected]="item.lb_three_name == b_lb_three">
+      {{ item.lb_three_name }}
+    </option>
+  </select>
+</div>
+
+<!-- <div class="form-group mt-2">
+  <select class="form-control" [(ngModel)]="category" (change)="select_change()">
+    <option value="">Leaderboard</option>
+    <option value="new_00">Add New</option>
+    <option *ngFor="let item of categoriesDrop" [value]="item.slug">{{ item.title }}</option>
+
+  </select>
+</div> -->
+
+
+<button (click)="add_cate(3)" type="button" class="btn btn-warning mt-2">Publish Now</button>
+
+<div class="chips mt-2">
+  <p *ngFor="let item of categories" class="fs-6 badge rounded-pill text-bg-warning mr-2" style="margin-right: 6px;">
+    <span style="cursor: pointer;" (click)="close(item.id)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </span>
+    {{ item.lb_three_name }}</p>
+</div>

@@ -1,0 +1,66 @@
+<div class="container-fluid lb_brands">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-10 mx-auto p-2 d-flex _logbox">
+        <div class="boxx mt-4">
+          <h4 class="fs-5 fw-bold mb-5">
+            {{ brands[0].leaderboard }}
+          </h4>
+          <h2 class="mb-1">
+            <span class="fw-bold fs-4 heading">The Brands</span>
+            <!-- <span class="fs-6">&nbsp; Discover brands who have had the most sales on Good Yellow up to today.</span> -->
+          </h2>
+          <div style="border-bottom: 5px solid #FFE01D; width: 40%; "></div>
+
+          <div class="row mt-4 mt-4">
+            <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4 col-6 loop" *ngFor="let brand of brands">
+              <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}">
+                <div class="album">
+
+                  <div class="row">
+                    <div class="col-12" *ngFor="let photo of brand.brand_photos">
+
+                      <div>
+                        <img [src]="'https://administrator.goodyellowco.com/uploads/'+photo.url"
+                          onerror="this.src='../../../assets/imgs/default_gy.webp'" class="mb-2 mr-2">
+
+
+                      </div>
+
+
+
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </a>
+
+
+
+              <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}">
+                <h2 class="fw-bold fs-5 mb-2 text-wrap" style="font-family: HeroNewExtraBlack !important;">
+                  {{ brand.company }}
+                </h2>
+              </a>
+
+
+            </div>
+
+
+
+            <!-- // end loop -->
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

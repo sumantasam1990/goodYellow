@@ -1,0 +1,49 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="boxx mt-4">
+
+
+
+          <p class="fw-bold mt-5 fs-5" *ngIf="loading">Loading...</p>
+
+          <ul class="mt-4 text-left" *ngIf="leaderboards && leaderboards.length > 0">
+            <li *ngFor="let item of leaderboards" class="text-left mb-2">
+              <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none"
+                routerLink="/discover/brands/level/three/{{ item.id }}">{{ item.lb_two_name }}</a>
+
+              <div *ngIf="item.discount > 5 && item.discount < 15" class="discount-light-green-level">Highest Discount:
+                {{  item.discount }}%
+              </div>
+
+              <div *ngIf="item.discount > 16 && item.discount < 30" class="discount-light-green-second-level">Highest
+                Discount:
+                {{  item.discount }}%
+              </div>
+
+              <div *ngIf="item.discount > 30 && item.discount < 50" class="discount-dark-green-second-level">Highest
+                Discount:
+                {{  item.discount }}%
+              </div>
+
+              <div *ngIf="item.discount > 50" class="discount-dark-green-level">Highest Discount: {{  item.discount }}%
+              </div>
+
+
+
+            </li>
+          </ul>
+
+          <p class="fw-bold mt-5 fs-5" *ngIf="!loading && leaderboards && leaderboards.length == 0">Sorry No data
+            Found.</p>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /leaderboard/brands/list/{{ item.id }} -->

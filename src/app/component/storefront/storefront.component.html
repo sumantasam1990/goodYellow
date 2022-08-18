@@ -1,0 +1,143 @@
+<div class="container-fluid mt-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-danger">
+          “Please go to <a style="color: #000;" class="alert-link fw-bold"
+            routerLink="/vendor-signup-create-leaderboard">create
+            leaderboard</a> and
+          re-create your
+          leaderboards using our new product
+          categories”.
+          <span class="fw-bold text-dark">
+            If you have already done this, disregard this message.
+          </span>
+        </div>
+        <div class="img-box">
+          <div class="cover">
+            <img [src]="'https://administrator.goodyellowco.com/uploads/'+vendorData.cover_photo" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3" style="z-index: 1000;">
+        <div class="profile">
+          <img [src]="'https://administrator.goodyellowco.com/uploads/'+vendorData.brand_photo" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-9 mt-4 main_part">
+        <h1 class="fs-1 fw-bold heading brandName">{{ vendorData.brand }} </h1>
+        <p class="badge bg-danger fs-6">{{ vendorData.private === 1 ? '🔒 Private' : '' }}</p>
+        <p class="fw-bold fs-5 mb-4">Highest Discount: <span class="text-warning">{{ vendorData.max_discount }}%</span>
+        </p>
+        <p class="fs-6 text-secondary mb-4" style="margin-top: -8px;">{{ vendorData.brand_description }}</p>
+
+        <div class="mb-4" *ngIf="vendorData.private === 0">
+          <button class="btn btn-dark btn-lg" (click)="private()">🔒 Make Your Storefront Private</button>
+        </div>
+
+        <div class="mb-4" *ngIf="vendorData.private === 1">
+          <button class="btn btn-dark btn-lg" (click)="public()">🔓 Make Your Storefront Public</button>
+        </div>
+
+        <p style="margin-top: -14px;">
+          <a routerLink="/vendor-signup-photos/storefront" class="btn btn-warning mt-3 btn-sm">Edit Photos</a>
+          <a routerLink="/vendor/edit/description" class="btn btn-warning mt-3 btn-sm">Edit Description</a>
+          <a routerLink="/vendor-signup-create-leaderboard" class="btn btn-warning mt-3 btn-sm">Edit Leaderboards</a>
+          <a routerLink="/vendor-signup-links/storefront" class="btn btn-warning mt-3 btn-sm">Edit Contact Info</a>
+          <a target="_blank" routerLink="/storefront/{{ vendorData.slug }}" class="btn btn-warning mt-3 btn-sm">Preview
+            Storefront</a>
+          <a routerLink="/vendor-orders" class="btn btn-warning mt-3 btn-sm">Your Orders</a>
+          <a routerLink="/vendor-connect-stripe" class="btn btn-warning mt-3 btn-sm">Edit Stripe</a>
+        </p>
+        <div class="row mt-3">
+          <div class="col-md-3 mt-5">
+            <button (click)="public_founders()" type="button" class="btn_box">&nbsp; The Founders</button>
+            <a routerLink="/vendor-signup-founders/storefront" class="btn btn-warning mt-4 btn-sm">Edit Founders</a>
+          </div>
+          <div class="col-md-3 mt-5">
+            <button (click)="public_people()" type="button" class="btn_box">&nbsp; The People</button>
+            <a routerLink="/vendor-signup-people/storefront" class="btn btn-warning mt-4 btn-sm">Edit People</a>
+          </div>
+          <div class="col-md-3 mt-5">
+            <button (click)="public_story()" type="button" class="btn_box">&nbsp; The Story</button>
+            <a routerLink="/vendor-signup-story/storefront" class="btn btn-warning mt-4 btn-sm">Edit Story</a>
+          </div>
+          <div class="col-md-3 mt-5">
+            <button (click)="public_faqs()" type="button" class="btn_box">&nbsp; FAQs</button>
+            <a routerLink="/vendor-signup-faqs/storefront" class="btn btn-warning mt-4 btn-sm">Edit FAQs</a>
+          </div>
+          <div class="col-md-3 mt-5">
+            <button (click)="public_brand_video()" type="button" class="btn_box">&nbsp; Brand Video</button>
+            <a routerLink="/vendor-signup-video/storefront" class="btn btn-warning mt-4 btn-sm">Edit Video</a>
+          </div>
+          <div class="col-md-3 mt-5">
+            <button (click)="public_brand_photo()" type="button" class="btn_box">&nbsp; Brand Photos</button>
+            <a routerLink="/vendor-signup-brand-photos/storefront" class="btn btn-warning mt-4 btn-sm">Edit Photos</a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row mb-4" style="margin-top: 80px;">
+      <div class="col-md-12">
+        <h2 class="fs-4 fw-bold heading"> The Products ( {{ vendorData.products.length }} ) </h2>
+        <p class="add_prod"><a routerLink="/create-product" class="btn btn-warning mt-3 btn-lg ">Add Product</a>
+        </p>
+      </div>
+    </div>
+    <div class="row product">
+      <div class="col-md-4" *ngFor="let item of vendorData.products">
+        <img *ngIf="item.image != ''" [src]="'https://administrator.goodyellowco.com/uploads/'+item.image"
+          class="img-fluid">
+        <img *ngIf="item.image == ''" src="https://cdn-icons-png.flaticon.com/512/149/149635.png" class="img-fluid">
+        <p class="fw-bold fs-6 mt-3 text-danger">{{ item.publish == 1 ? 'Published': 'Draft' }}</p>
+        <h4 class="fs-4 fw-bold mt-4">{{ item.name }}</h4>
+        <p class="fs-5">${{ item.price }} <span class="fw-bold">({{ item.discount }}% Off)</span></p>
+
+        <p>
+          <a routerLink="/edit-product/{{ item.id }}" class="btn btn-warning mt-3 btn-sm">Edit Product</a>
+          <a (click)="deleteProduct(item.id)" class="btn btn-warning mt-3 btn-sm">Delete Product</a>
+          <a *ngIf="item.publish == 1" routerLink="/preview-product/{{ item.puniq_id }}"
+            class="btn btn-warning mt-3 btn-sm">Preview Product</a>
+        </p>
+
+      </div>
+    </div>
+
+    <!------------------Discounts------------------------------->
+
+    <div class="row mb-4 mt-5" style="margin-top: 80px;">
+      <div class="col-md-12">
+        <h2 class="fs-4 fw-bold heading"> Discount Codes ( {{ vendorData.products.length }} ) </h2>
+        <p class="add_prod"><a routerLink="/product/discount/add" class="btn btn-warning mt-3 btn-lg ">Add Discount
+            Code</a>
+        </p>
+      </div>
+    </div>
+    <div class="row product">
+      <div class="col-md-4" *ngFor="let item of vendorData.discount_products">
+        <img *ngIf="item.image != ''" [src]="'https://administrator.goodyellowco.com/uploads/'+item.image"
+          class="img-fluid">
+        <img *ngIf="item.image == ''" src="https://cdn-icons-png.flaticon.com/512/149/149635.png" class="img-fluid">
+        <!-- <p class="fw-bold fs-6 mt-3 text-danger">{{ item.publish == 1 ? 'Published': 'Draft' }}</p> -->
+        <h4 class="fs-4 fw-bold mt-4">{{ item.name }}</h4>
+        <p class="fs-5">${{ item.price }} </p>
+        <p class="fw-bold fs-5">Discount code: {{ item.discount_code }}</p>
+        <p>
+          <a routerLink="/edit/discount/{{ item.id }}" class="btn btn-warning mt-3 btn-sm">Edit Discount Code</a>
+          <a (click)="deleteDiscountProduct(item.id)" class="btn btn-warning mt-3 btn-sm">Delete Discount Code</a>
+          <a routerLink="/preview/discount/{{ item.id }}" class="btn btn-warning mt-3 btn-sm">Preview Discount
+            Code</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>

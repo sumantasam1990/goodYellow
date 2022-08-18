@@ -1,0 +1,124 @@
+<div class="container-fluid mt-4 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="img-box">
+          <div class="cover">
+            <img [src]="'https://administrator.goodyellowco.com/uploads/'+vendorData.cover_photo" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3" style="z-index: 1000;">
+        <div class="profile_public">
+          <img [src]="'https://administrator.goodyellowco.com/uploads/'+vendorData.brand_photo" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-9 mt-4 main_part">
+        <h1 class="fs-1 fw-bold heading brandName">{{ vendorData.brand }}</h1>
+        <p class="fw-bold fs-5 mb-4">Highest Discount: <span class="text-warning">{{ vendorData.max_discount }}%</span>
+        </p>
+        <p class="fs-6 text-secondary mb-4" style="margin-top: -8px;">{{ vendorData.brand_description }}</p>
+
+      </div>
+    </div>
+
+
+    <div class="row mt-2">
+      <div class="col-md-12">
+        <a href="#" type="button" class="btn btn-warning btn-sm mb-3">&nbsp; Email Us</a>
+        <button type="button" class="btn btn-warning btn-sm mb-3">&nbsp; Connect With
+          Us</button>
+        <a routerLink="/view/leaderboards/{{ slug }}" type="button" class="btn btn-warning btn-sm mb-3">&nbsp;
+          Leaderboard
+          List</a>
+      </div>
+
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="col-md-3 mt-3">
+        <button (click)="public_founders()" type="button" class="btn_box">&nbsp; The Founders</button>
+
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="public_people()" type="button" class="btn_box">&nbsp; The People</button>
+
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="public_story()" type="button" class="btn_box">&nbsp; The Story</button>
+
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="public_faqs()" type="button" class="btn_box">&nbsp; FAQs</button>
+
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="public_brand_video()" type="button" class="btn_box">&nbsp; Brand Video</button>
+
+      </div>
+      <div class="col-md-3 mt-3">
+        <button (click)="public_brand_photo()" type="button" class="btn_box">&nbsp; Brand Photos</button>
+
+      </div>
+    </div>
+
+
+
+    <div class="row" style="margin-top: 80px;">
+      <div class="col-md-12">
+        <h2 class="fs-1 fw-bold mb-4 heading"> The Products </h2>
+        <div class="devider-left" style="border-width: 4px;"></div>
+      </div>
+
+    </div>
+    <div class="row product mt-4">
+
+      <div class="col-md-4 mb-3" *ngFor="let item of vendorData.products">
+        <a routerLink="/u/product/{{ item.puniq_id }}"><img *ngIf="item.image != ''"
+            [src]="'https://administrator.goodyellowco.com/uploads/'+item.image" class="img-fluid"></a>
+        <a routerLink="/preview-product/{{ item.puniq_id }}"><img *ngIf="item.image == ''"
+            src="https://cdn-icons-png.flaticon.com/512/149/149635.png" class="img-fluid"></a>
+
+        <a routerLink="/preview-product/{{ item.puniq_id }}">
+          <h4 class="fs-4 fw-bold mt-4">{{ item.name }}</h4>
+        </a>
+        <p class="fs-5">${{ item.price }} <span class="fw-bold">({{ item.discount }}% Off)</span></p>
+
+
+
+      </div>
+    </div>
+
+    <!------------------Discounts------------------------------->
+
+    <div class="row mb-4 mt-5" style="margin-top: 80px;">
+      <div class="col-md-12">
+        <h2 class="fs-4 fw-bold heading"> Discount Codes </h2>
+        <div class="devider-left" style="border-width: 4px;"></div>
+
+      </div>
+    </div>
+    <div class="row product">
+      <div class="col-md-4 mb-3" *ngFor="let item of vendorData.discount_products">
+        <a routerLink="/preview/discount/{{ item.id }}"><img *ngIf="item.image != ''"
+            [src]="'https://administrator.goodyellowco.com/uploads/'+item.image" class="img-fluid"></a>
+        <a routerLink="/preview/discount/{{ item.id }}"><img *ngIf="item.image == ''"
+            src="https://cdn-icons-png.flaticon.com/512/149/149635.png" class="img-fluid"></a>
+        <!-- <p class="fw-bold fs-6 mt-3 text-danger">{{ item.publish == 1 ? 'Published': 'Draft' }}</p> -->
+        <a routerLink="/preview/discount/{{ item.id }}">
+          <h4 class="fs-4 fw-bold mt-4">{{ item.name }}</h4>
+        </a>
+        <p class="fs-5">${{ item.price }} </p>
+        <p class="fw-bold fs-5">Discount code: {{ item.discount_code }}</p>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

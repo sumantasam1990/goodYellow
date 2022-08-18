@@ -1,0 +1,45 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Edit Description</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 250px; margin: 0 auto;"></div>
+
+
+          <!-- <p class="text-dark fs-6 fw-bold text-center mt-4">
+            Please upload 10 quality photos of the brand. This can be photos of your products, photos from your website,
+            graphical portions of your websites and more.
+          </p> -->
+
+
+          <div class="form-group mt-4">
+            <textarea rows="8" class="form-control" placeholder="Write your brand description..."
+              [(ngModel)]="txt"></textarea>
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="d-grid gap-2">
+                <button (click)="save()" class="btn btn-warning mt-3 btn-lg">Save Changes</button>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3 btn-lg">Return To Storefront</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

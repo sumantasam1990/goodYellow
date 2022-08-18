@@ -1,0 +1,73 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Support Page</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 200px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
+              Please send us any functionality issues that you are experiencing with setting up your Good Yellow
+              storefront or account and we will resolve it within 12 hours”.
+
+            </p>
+
+
+          </div>
+
+
+          <label class="mt-2">Email*</label>
+          <input [(ngModel)]="email" type="email" class="form-control mt-3" placeholder="Your Email">
+          <label class="mt-3">Business Name*</label>
+          <input [(ngModel)]="business_name" type="text" class="form-control mt-3" placeholder="Business Name">
+          <label class="mt-3">Issues*</label>
+          <textarea [(ngModel)]="issue" rows="6" class="form-control mt-3"
+            placeholder="Please describe the issues you found..."></textarea>
+
+          <label class="mt-3"> Upload Image 1 (Optional) </label>
+          <input type="file" class="form-control mt-3" (change)="doFileInput($event)">
+          <p *ngIf="attachOne"><img style="width: 100px;" [src]="'data:image/png;base64,' + attachOne"
+              class="img-fluid mt-2"></p>
+          <label class="mt-3"> Upload Image 2 (Optional) </label>
+          <input type="file" class="form-control mt-3" (change)="doFileInputTwo($event)">
+          <p *ngIf="attachTwo"><img style="width: 100px;" [src]="'data:image/png;base64,' + attachTwo"
+              class="img-fluid mt-2"></p>
+          <label class="mt-3"> Upload Image 3 (Optional) </label>
+          <input type="file" class="form-control mt-3" (change)="doFileInputThree($event)">
+          <p *ngIf="attachThree"><img style="width: 100px;" [src]="'data:image/png;base64,' + attachThree"
+              class="img-fluid mt-2"></p>
+          <label class="mt-3"> Upload Image 4 (Optional) </label>
+          <input type="file" class="form-control mt-3" (change)="doFileInputFour($event)">
+          <p *ngIf="attachFour"><img style="width: 100px;" [src]="'data:image/png;base64,' + attachFour"
+              class="img-fluid mt-2"></p>
+          <label class="mt-3"> Upload Image 5 (Optional) </label>
+          <input type="file" class="form-control mt-3" (change)="doFileInputFive($event)">
+          <p *ngIf="attachFive"><img style="width: 100px;" [src]="'data:image/png;base64,' + attachFive"
+              class="img-fluid mt-2"></p>
+
+
+
+
+          <div class="row mt-4 mb-4">
+
+            <div class="col-12">
+              <div class="d-grid gap-2 mx-auto col-6">
+                <button [disabled]="disabled" (click)="save()" type="button"
+                  class="btn btn-warning btn-lg mt-3">Send</button>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

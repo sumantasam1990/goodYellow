@@ -1,0 +1,81 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-1 mt-3 heading">Connect Your Stripe Account</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 420px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
+              We require Brands use Stripe as their payment gateway. Good Yellow will not in any way have access to your
+              Stripe account. 100% of payments made by your customers when buying your products will go DIRECTLY into
+              your Stripe account minus any credit card processing fees. You can then access your payments that you have
+              received in your Stripe account.
+
+
+            </h4>
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              Please start connecting your Stripe account below.
+
+            </p>
+
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              Once you have connected your Stripe account you will be able to start creating your Storefront and Product
+              Pages.
+
+            </p>
+            <hr />
+            <p class="text-dark fs-5 fw-bold HeroNew">
+              Instructions:
+            </p>
+
+            <p class="fs-6 fw-bold">✔️ Go to <a href="https://dashboard.stripe.com/apikeys"
+                target="_blank">https://dashboard.stripe.com/apikeys</a></p>
+            <p class="fs-6 fw-bold">✔️ Now you can see API/Publishable key</p>
+            <p class="fs-6 fw-bold">✔️ Below Publishable key you can see Secret key. (Note: If you can not find the
+              secret
+              key, you can Click
+              on the "Create Secret Key" button.)</p>
+            <p class="fs-6 text-danger fw-bold">✔️ Make sure all keys should be "Live" keys.</p>
+
+
+          </div>
+
+
+          <div class="mt-4 form-group col-10 mx-auto">
+            <input [disabled]="disabled" type="text" class="form-control" [(ngModel)]="api"
+              placeholder="*Your Stripe API/Publishable Key">
+          </div>
+
+          <div class="mt-4 form-group col-10 mx-auto">
+            <input [disabled]="disabled" type="text" class="form-control" [(ngModel)]="secret"
+              placeholder="*Your Stripe Secret Key">
+          </div>
+
+          <div class="d-grid gap-2 mx-auto col-5">
+            <button [disabled]="disabled" (click)="connect()" type="button" class="btn btn-warning mt-3">Connect Stripe
+              Account</button>
+          </div>
+
+          <p class="mt-2 text-center">
+            <a [href]="stripe_url" target="_blank">{{ stripe_url }}</a>
+          </p>
+          <p class="text-center fw-bold fs-5" *ngIf="stripe_url">
+            *Click on this link and connect your stripe account with us.
+          </p>
+
+          <div class="d-grid gap-2 mx-auto col-6">
+            <button [disabled]="disabled" (click)="finish()" type="button" class="btn btn-dark mt-3">Finish</button>
+          </div>
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: HeroNew;
+  src: url("./assets/fonts/Hero\ New\ Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: HeroNewExtraBlack;
+  src: url("./assets/fonts/Hero\ New\ ExtraBold.otf") format("opentype");
+}
+
+
+html,
+body {
+  height: 100%;
+
+}
+
+body {
+  margin: 0;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  // position: relative;
+  font-family: HeroNew !important;
+}
+
+.discount-light-green {
+  background-color: #F2F9DC !important;
+  color: #ccc !important;
+  font-weight: bold;
+  padding: 16px;
+  font-size: 22px;
+  text-align: center;
+
+}
+
+.discount-light-green-second {
+  background-color: #D8F9C0 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 16px;
+  font-size: 22px;
+  text-align: center;
+
+}
+
+.discount-dark-green-second {
+  background-color: #AEF942 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 16px;
+  font-size: 22px;
+  text-align: center;
+
+}
+
+.discount-dark-green {
+  background-color: #296603 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 16px;
+  font-size: 22px;
+  text-align: center;
+
+}
+
+.discount-dark-green-level {
+  background-color: #296603 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  // width: 100px;
+  float: right;
+}
+
+.discount-dark-green-second-level {
+  background-color: #AEF942 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  // width: 100px;
+  float: right;
+
+}
+
+.discount-light-green-second-level {
+  background-color: #D8F9C0 !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  // width: 100px;
+  float: right;
+
+}
+
+.discount-light-green-level {
+  background-color: #F2F9DC !important;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  // width: 100px;
+  float: right;
+
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}

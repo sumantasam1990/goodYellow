@@ -1,0 +1,60 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Add Product Images</h1>
+
+          <div style="border-bottom: 5px solid #FFE01D; width: 300px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-5 text-primary fw-bold text-center mt-4 HeroNew mb-4" style="line-height: 28px;">
+              ⭐ Upto 6 images and each image should be less than 1 MB.
+            </p>
+          </div>
+
+
+
+
+          <button (click)="fileInputMain.click()" type="button" class="img_btn">&nbsp; *Upload Product Photo</button>
+          <input #fileInputMain type="file" hidden (change)="doFileInput($event)">
+
+          <h4 *ngIf="preview_photo" class="fw-bold mt-2">Preview</h4>
+          <p *ngIf="preview_photo" class="mt-3">
+            <img [src]="preview_photo" style="width: 120px; height: 120px; object-fit: contain;" />
+          </p>
+
+          <button [disabled]="disabled" (click)="upload()" type="button" class="btn btn-warning btn-lg mt-3"> Add
+            Another</button>
+
+          <p *ngIf="upload_txt" class="fw-bold fs-6 HeroNew text-danger mt-4 text-center">
+            {{ upload_txt }} <br>
+            <img src="../../../assets/imgs/Ripple-1s-200px.gif">
+          </p>
+
+
+          <hr />
+
+          <h4 class="fw-bold">Uploaded: </h4>
+          <div class="row mt-3 brand_images">
+            <div *ngFor="let item of photos" class="col-3">
+              <img [src]="'https://administrator.goodyellowco.com/uploads/' + item.url" />
+              <p class="fs-6"><a (click)="delete(item.id)" class="btn btn-link text-danger fs-6">Delete</a></p>
+            </div>
+          </div>
+
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <!-- <button [disabled]="disabled" type="button" class="btn btn-warning btn-lg"> Save and Come Back</button> -->
+            <button [disabled]="disabled" (click)="next()" type="button" class="btn btn-warning btn-lg">
+              Next</button>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

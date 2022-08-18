@@ -1,0 +1,96 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Edit Discount</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 200px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-6 fw-bold text-center mt-4 mb-4 HeroNew">
+              Edit information about the discount code that you're offering. Members will be receive the discount code
+              and information via email.
+            </p>
+          </div>
+
+
+
+          <div class="form-group">
+            <label>Product Price*</label>
+            <input type="text" [(ngModel)]="price" class="form-control" placeholder="*Product Price">
+          </div>
+
+          <div class="form-group">
+            <label>Product Name*</label>
+            <input type="text" [(ngModel)]="name" class="form-control" placeholder="*Product Name">
+          </div>
+
+
+
+
+
+
+
+          <div class="form-group">
+            <label>Product Description*</label>
+            <textarea [(ngModel)]="desc" class="form-control" placeholder="*Product Description" rows="6"></textarea>
+          </div>
+
+
+
+
+          <hr />
+
+          <div class="form-group">
+            <label>*Discount Percentage</label>
+            <input type="text" [(ngModel)]="disc_percentage" class="form-control" placeholder="Discount Percentage">
+          </div>
+
+          <div class="form-group">
+            <label>*Discount Code</label>
+            <input type="text" [(ngModel)]="disc_code" class="form-control" placeholder="Discount Code">
+          </div>
+
+          <div class="form-group">
+            <label>*How Many Discount Codes?</label>
+            <input type="text" [(ngModel)]="disc_how_many" class="form-control" placeholder="How Many Discount Codes?">
+          </div>
+
+
+          <div class="form-check mt-3">
+            <input value="1" class="form-check-input" type="checkbox" [(ngModel)]="excl_discount" role="switch"
+              id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Exclusive Discount On Good Yellow?</label>
+          </div>
+
+
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <!-- <button [disabled]="disabled" type="button" class="btn btn-warning btn-lg"> Save and Come Back</button> -->
+            <button [disabled]="disabled" (click)="publish()" type="button" class="btn btn-warning btn-lg">
+              Update And Next</button>
+          </div>
+
+          <div class="mt-3 error" *ngIf="validError">
+            <ul>
+              <li *ngIf="validPrice">{{ validPrice[0] }}</li>
+              <li *ngIf="validName">{{ validName[0] }}</li>
+              <li *ngIf="validshipping_time">{{ validshipping_time[0] }}</li>
+              <li *ngIf="validcate">{{ validcate[0] }}</li>
+              <li *ngIf="validsubcate">{{ validsubcate[0] }}</li>
+              <li *ngIf="validdesc">{{ validdesc[0] }}</li>
+              <li *ngIf="validinventory">{{ validinventory[0] }}</li>
+              <li *ngIf="validshipping_cost">{{ validshipping_cost[0] }}</li>
+
+              <li *ngIf="validDiscountCode">{{ validDiscountCode[0] }}</li>
+              <li *ngIf="validDiscountHowMany">{{ validDiscountHowMany[0] }}</li>
+
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

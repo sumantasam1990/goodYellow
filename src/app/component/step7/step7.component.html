@@ -1,0 +1,72 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <div class="flex-small-text">
+            <p class="text-danger fs-6 fw-bold text-center mt-2 mb-4 small-text" *ngIf="!storefront">
+              If you would like to stop and continue later, you can do so at any time. The sign up process auto saves
+              every second. Simply come back and login and continue where you left off.
+            </p>
+          </div>
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">The Story</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 160px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
+              The second section here is for the actual story behind the brand. Why did you create it, where did the
+              reason or inspiration come from, what causes do you donate to, how is it good for people, the planet or
+              society and more.
+
+            </h4>
+            <!-- <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              At least 5,000 characters are required.
+            </p> -->
+
+          </div>
+
+          <div class="form-group mt-5">
+            <textarea [(ngModel)]="txt" rows="14" class="form-control" placeholder="* Story of The Brand."></textarea>
+          </div>
+
+          <!-- <div class="row mt-3">
+            <div class="col-12">
+              <h4 class="fw-bold">Preview</h4>
+              <p>
+                {{ this.txt }}
+              </p>
+            </div>
+          </div> -->
+
+          <div class="row mt-4 mb-4" *ngIf="!storefront">
+            <div class="col-6">
+              <a routerLink="/vendor-signup-people" class="btn btn-warning mt-3">Back</a>
+            </div>
+            <div class="col-6">
+              <button (click)="next()" style="float: right;" type="button" class="btn btn-warning mt-3">Next</button>
+            </div>
+          </div>
+
+          <div class="row mb-4" *ngIf="storefront">
+            <div class="col-md-6">
+              <div class="d-grid gap-2">
+                <a (click)="save()" class="btn btn-warning mt-3 btn-lg">Save Changes</a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3 btn-lg">Return To Storefront</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

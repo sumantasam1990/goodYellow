@@ -1,0 +1,59 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Create Leaderboard</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 300px; margin: 0 auto;"></div>
+
+
+          <div class="form-group mt-4">
+            <select class="form-control" [(ngModel)]="category">
+              <option value="">*Choose One</option>
+              <option>Brand</option>
+              <option>Causes</option>
+              <option>Good for people</option>
+              <option>Good for planet</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <textarea [(ngModel)]="title" rows="5" class="form-control"
+              placeholder="*Title Of New Leaderboard"></textarea>
+          </div>
+
+          <button [disabled]="disabled" (click)="add_more()" type="button" class="btn btn-warning mt-4">Add
+            More</button>
+
+          <div class="mt-4">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Leaderboard Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of leaderboards">
+                  <td>{{ item.category }}</td>
+                  <td>{{ item.title }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-4 mb-4">
+            <div class="col-12">
+              <button [disabled]="disabled" (click)="save()" style="float: right;" type="button"
+                class="btn btn-warning mt-3">Save</button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

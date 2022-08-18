@@ -1,0 +1,103 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <div class="text-center flex-small-text">
+            <p class="text-danger fs-6 fw-bold text-center mt-2 mb-4 small-text" *ngIf="!storefront">
+              If you would like to stop and continue later, you can do so at any time. The sign up process auto saves
+              every second. Simply come back and login and continue where you left off.
+            </p>
+          </div>
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Photos</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 120px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">Please upload the main profile photo, the cover
+              photo and your brand photo.</h4>
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              The brand photo will show up on every Leaderboard that you have added your Brand to.. This will be the
+              very first photo that people browsing Good Yellow will see of your Brand on those Leaderboards. This is
+              your chance to grab their attention. Make it good!
+
+            </p>
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              The UPLOAD button should only appear AFTER the photo has been uploaded. AND if they forget to click UPLOAD
+              before they click NEXT, there should be a message that says ‘please click upload”
+
+
+            </p>
+
+            <p class=" fs-5 fw-bold text-center HeroNew text-primary">
+              ⭐ Photo should be less than 1MB.
+            </p>
+
+            <p class=" fs-6 fw-bold text-center HeroNew text-danger">
+              ✔️ Cover photo dimensions should be 1920px x 400px <br>
+              ✔️ Brand & Main photo dimensions should be 200px x 200px
+            </p>
+          </div>
+
+
+          <button (click)="fileInputMain.click()" type="button" class="img_btn mt-4">&nbsp; Main Profile</button>
+          <input #fileInputMain type="file" hidden (change)="doFileInput($event)">
+          <img *ngIf="mainProfile" [src]="'data:image/png;base64,'+mainProfile" class="mt-2"
+            style="width: 100px; height: 100px; object-fit: contain;">
+
+
+          <button (click)="fileInputMainCover.click()" type="button" class="img_btn mt-3">&nbsp; Cover Photo</button>
+          <input #fileInputMainCover type="file" hidden (change)="doFileInputCover($event)">
+          <img *ngIf="coverPhoto" [src]="'data:image/png;base64,'+coverPhoto" class="mt-2"
+            style="width: 100px; height: 100px; object-fit: contain;">
+
+
+          <button (click)="fileInputMainBrand.click()" type="button" class="img_btn mt-3">&nbsp; Brand Photo</button>
+          <input #fileInputMainBrand type="file" hidden (change)="doFileInputBrand($event)">
+          <img *ngIf="brandPhoto" [src]="'data:image/png;base64,'+brandPhoto" class="mt-2"
+            style="width: 100px; height: 100px; object-fit: contain;">
+
+          <p>
+            <button [disabled]="disabled" (click)="upload()" type="button" class="btn btn-warning mt-3">Upload</button>
+          </p>
+
+
+          <hr />
+
+          <div class="row brand_images">
+            <div *ngFor="let item of photos" class="col-md-4 text-center">
+              <img [src]="'https://administrator.goodyellowco.com/uploads/' + item.url" />
+              <p class="fw-bold">( {{ item.type }} )</p>
+              <p><button (click)="delete(item.id)" type="button" class="btn btn-clear text-danger fs-6">Delete
+                  photo</button></p>
+            </div>
+          </div>
+
+
+          <div class="row mt-4 mb-4" *ngIf="!storefront">
+            <div class="col-6">
+              <a routerLink="/vendor-signup-create-leaderboard" class="btn btn-warning mt-3">Back</a>
+            </div>
+            <div class="col-6">
+              <button [disabled]="disabled" (click)="next()" style="float: right;" type="button"
+                class="btn btn-warning mt-3">Next</button>
+            </div>
+          </div>
+
+          <div class="row mb-4" *ngIf="storefront">
+            <div class="col-md-12">
+              <div class="d-grid gap-2">
+                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3 btn-lg">Return To Storefront</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

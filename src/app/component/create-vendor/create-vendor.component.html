@@ -1,0 +1,62 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-2 heading">Partner Sign Up Page</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 320px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">Thank you so much for signing up as a Partner.
+            </h4>
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">Please complete the form below and the forms after to
+              complete
+              your sign
+              up process.
+              You will then be able
+              to create your Storefront and add products.</p>
+          </div>
+
+
+          <div class="form-group">
+            <label></label>
+            <input type="text" name="fname" [(ngModel)]="log.fname" class="form-control"
+              placeholder="Founder's First Name">
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="text" name="lname" [(ngModel)]="log.lname" class="form-control"
+              placeholder="Founder's Last Name">
+          </div>
+
+          <div class="form-group">
+            <label></label>
+            <input type="text" name="company" [(ngModel)]="log.company" class="form-control" placeholder="Company Name">
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="email" name="email" [(ngModel)]="log.email" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="password" name="pass" [(ngModel)]="log.pass" class="form-control"
+              placeholder="Create Password">
+          </div>
+          <div class="form-group">
+            <label></label>
+            <input type="password" name="c_pass" [(ngModel)]="log.c_pass" class="form-control"
+              placeholder="Confirm Password">
+          </div>
+
+
+          <div class="d-grid gap-2 mx-auto col-md-5 mt-4 mb-4">
+            <h4 class="fw-bold text-dark" [innerHtml]="msg_text"></h4>
+            <button type="button" (click)="signup()" class="btn btn-warning btn-lg">Next</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

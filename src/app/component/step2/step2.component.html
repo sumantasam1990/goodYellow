@@ -1,0 +1,370 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <div class="text-center flex-small-text">
+            <p class="text-danger fs-6 fw-bold text-center mt-2 mb-4 small-text">
+              If you would like to stop and continue later, you can do so at any time. The sign up process auto saves
+              every second. Simply come back and login and continue where you left off.
+            </p>
+          </div>
+
+
+
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Create Leaderboards</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 300px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
+              The main benefit of brands partnering with Good Yellow is our unique system of Leaderboards that we have
+              created. Leaderboards are basically categories that Members and consumers will use to find Brands.
+              Leaderboards work to help brands with free and highly effective visibility to gain attention from
+              potential new customers.
+
+            </h4>
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              Leaderboards are displayed based on the highest to lowest number of sales "brand-wide" NOT a brand's sales
+              from within that category. We also display how many different customers a brand has.
+            </p>
+
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              One of the most unique things about Leaderboards is that Brands are the ones who can create and title the
+              Leaderboards. This is a chance for Partners to convey attributes about their Brand or products that they
+              believe will attract the attention of their target audience the most. Be super creative. The title of a
+              Leaderboard basically acts like an advertisement for Brands within that Leaderboard. Make it very specific
+              or more broad. If the title of a Leaderboard is more specific, it will attract less Brands. The smaller
+              number of Brands that a Leaderboard has within it, the lower it will be on a Leaderboard List and will
+              attract much less visibility.
+
+
+            </p>
+
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              If there are two or more similarly titled Leaderboards, we will combine them into one single Leaderboard.
+              Members can follow Leaderboards.
+
+            </p>
+
+            <p class="text-dark fs-6 fw-bold text-center HeroNew">
+              Click on 'What is this" below each text field to learn more about what each category and type of
+              leaderboard is.
+            </p>
+
+          </div>
+
+          <p class="fs-4 fw-bold">Brands</p>
+          <p class="mt-2">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"><small
+                class="text-danger">What is
+                this?</small></a>
+          </p>
+
+          <div class="form-group mt-2">
+            <select class="form-control" [(ngModel)]="b_lb_one" (change)="select_changeOne()">
+              <option value="">Level One</option>
+              <!-- <option value="new_00_one">Add New</option> -->
+              <option *ngFor="let item of dataOne" [value]="item.id">{{ item.lb_name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-2">
+            <select class="form-control" [(ngModel)]="b_lb_two" (change)="select_changeTwo()">
+              <option value="">Level Two</option>
+              <option value="new_00_two">Add New</option>
+              <option *ngFor="let item of dataTwo" [value]="item.id">{{ item.lb_two_name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-2">
+            <select class="form-control" [(ngModel)]="b_lb_three" (change)="select_changeThree()">
+              <option value="">Level Three</option>
+              <option value="new_00_three">Add New</option>
+              <option *ngFor="let item of dataThree" [value]="item.lb_three_name"
+                [selected]="item.lb_three_name == b_lb_three">
+                {{ item.lb_three_name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- <div class="form-group mt-2">
+            <select class="form-control" [(ngModel)]="category" (change)="select_change()">
+              <option value="">Leaderboard</option>
+              <option value="new_00">Add New</option>
+              <option *ngFor="let item of categoriesDrop" [value]="item.slug">{{ item.title }}</option>
+
+            </select>
+          </div> -->
+
+
+          <button (click)="add_cate(3)" type="button" class="btn btn-warning mt-2">Publish Now</button>
+
+          <div class="chips mt-2">
+            <p style="margin-right: 6px;" *ngFor="let item of categories"
+              class="fs-6 badge rounded-pill text-bg-warning mr-2">
+              <span style="cursor: pointer;" (click)="close(item.id)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </span>
+              {{ item.lb_three_name }}</p>
+          </div>
+
+
+          <app-causes></app-causes>
+
+          <app-planet></app-planet>
+
+          <app-people></app-people>
+
+          <!-- <div class="form-group mt-4">
+            <select class="form-control" [(ngModel)]="cause" (change)="select_change_cause()">
+              <option value="">Causes</option>
+              <option value="new_00">Add New</option>
+              <option *ngFor="let item of causesDrop" [value]="item.slug">{{ item.title }}</option>
+
+            </select>
+          </div>
+
+          <p class="mt-2">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModalCauses" style="cursor: pointer;"><small
+                class="text-danger">What is
+                this?</small></a>
+          </p>
+
+          <button (click)="add_cause()" type="button" class="btn btn-warning mt-1">Add Another</button>
+
+          <div class="chips mt-2">
+            <span *ngFor="let item of causes" class="badge rounded-pill text-bg-warning mr-2"
+              style="margin-right: 6px;">
+
+              {{ item.title }}</span>
+          </div> -->
+
+          <!-- <div class="form-group mt-4">
+            <select class="form-control" [(ngModel)]="goodPlanet" (change)="select_change_good_planet()">
+              <option value="">Good For The Planet</option>
+              <option value="new_00">Add New</option>
+              <option *ngFor="let item of planetDrop" [value]="item.slug">{{ item.title }}</option>
+
+            </select>
+          </div>
+
+          <p class="mt-2">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModalPlanet" style="cursor: pointer;"><small
+                class="text-danger">What is
+                this?</small></a>
+          </p>
+
+          <button (click)="good_planet()" type="button" class="btn btn-warning mt-1">Add Another</button>
+
+          <div class="chips mt-2">
+            <span *ngFor="let item of planets" class="badge rounded-pill text-bg-warning mr-2"
+              style="margin-right: 6px;">
+
+          {{ item.title }}</span>
+        </div> -->
+
+          <!-- <div class="form-group mt-4">
+            <select class="form-control" [(ngModel)]="people" (change)="select_change_good_people()">
+              <option value="">Good For People</option>
+              <option value="new_00">Add New</option>
+              <option *ngFor="let item of peopleDrop" [value]="item.slug">{{ item.title }}</option>
+
+            </select>
+          </div>
+
+          <p class="mt-2">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModalPeople" style="cursor: pointer;"><small
+                class="text-danger">What is
+                this?</small></a>
+          </p>
+
+          <button (click)="add_people()" type="button" class="btn btn-warning mt-1">Add Another</button>
+
+          <div class="chips mt-2">
+            <span *ngFor="let item of peoples" class="badge rounded-pill text-bg-warning mr-2"
+              style="margin-right: 6px;">
+
+              {{ item.title }}</span>
+          </div> -->
+
+          <div class="row mt-4 mb-4">
+
+            <div class="col-12">
+              <a routerLink="/vendor-storefront" style="float: right;" type="button" class="btn btn-warning mt-3">Go To
+                Storefront</a>
+              <button (click)="next()" style="float: right; margin-right: 6px;" type="button"
+                class="btn btn-warning mt-3">Next</button>
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-----------------Modals------------------------>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body mt-4">
+        <h1 class="display-6 fw-bold text-center mb-1 heading">Brands</h1>
+        <div style="border-bottom: 5px solid #FFE01D; width: 100px; margin: 0 auto;"></div>
+
+        <div class="mt-4">
+          <p class="HeroNew fs-6">
+            The Brands category allows you to create a Leaderboard and title it to describe something about your brand
+            that will appeal to and connect with your target audience.
+          </p>
+
+          <p class="HeroNew fs-6">
+            Before you do that, you must choose the primary section and the secondary section that your Leaderboard will
+            belong to.
+          </p>
+          <p class="HeroNew fs-6">
+            A leaderboard can be titled for example, a women-owned grass-fed beef jerky startup based in Denver.
+          </p>
+          <p class="HeroNew fs-6">
+            Be VERY creative, the title can be broad or very specific. There are NO limits to how many Leaderboards you
+            can create. The more Leaderboards or Leaderboard Lists you are on, the more visibility your brand will have.
+            The higher the number of sales you have, the higher chance you have of getting new customers since you will
+            be displayed towards the top of both Leaderboard Lists and Leaderboards.
+          </p>
+        </div>
+
+        <div class="d-grid gap-2 mx-auto col-4">
+          <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCauses" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body mt-4">
+        <h1 class="display-6 fw-bold text-center mb-1 heading">Causes</h1>
+        <div style="border-bottom: 5px solid #FFE01D; width: 100px; margin: 0 auto;"></div>
+
+        <div class="mt-4">
+          <p class="HeroNew fs-6">
+            The Causes category allows you to create a Leaderboard and title it to describe a charity that your brand
+            donates your profits or time to that will appeal to and connect with your target audience.
+          </p>
+
+          <p class="HeroNew fs-6">
+            Before you do that, you must choose the primary section and the secondary section that your Leaderboard will
+            belong to.
+          </p>
+          <p class="HeroNew fs-6">
+            A leaderboard can be titled for example for example, We donate 3% of our net profits to No Kid Hungry.
+          </p>
+          <p class="HeroNew fs-6">
+            Be VERY creative, the title can be broad or very specific. There are NO limits to how many Leaderboards you
+            can create. The more Leaderboards or Leaderboard Lists you are on, the more visibility your brand will have.
+            The higher the number of sales you have, the higher chance you have of getting new customers since you will
+            be displayed towards the top of both Leaderboard Lists and Leaderboards.
+          </p>
+        </div>
+
+        <div class="d-grid gap-2 mx-auto col-4">
+          <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalPlanet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body mt-4">
+        <h1 class="display-6 fw-bold text-center mb-1 heading">Good For The Planet</h1>
+        <div style="border-bottom: 5px solid #FFE01D; width: 280px; margin: 0 auto;"></div>
+
+        <div class="mt-4">
+          <p class="HeroNew fs-6">
+            The Good For The Planet category allows you to create a Leaderboard and title it to describe something about
+            how your brand is good for the planet. The title of the Leaderboard is meant to appeal to and connect with
+            your target audience.
+
+          </p>
+
+          <p class="HeroNew fs-6">
+            Before you do that, you must choose the primary section and the secondary section that your Leaderboard will
+            belong to.
+
+          </p>
+          <p class="HeroNew fs-6">
+            A leaderboard can be titled for example for example, "Our business has decreased our carbon footprint by
+            over 40% in the last year".
+          </p>
+          <p class="HeroNew fs-6">
+            Be VERY creative, the title can be broad or very specific. There are NO limits to how many Leaderboards you
+            can create. The more Leaderboards or Leaderboard Lists you are on, the more visibility your brand will have.
+            The higher the number of sales you have, the higher chance you have of getting new customers since you will
+            be displayed towards the top of both Leaderboard Lists and Leaderboards.
+
+          </p>
+        </div>
+
+        <div class="d-grid gap-2 mx-auto col-4">
+          <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalPeople" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body mt-4">
+        <h1 class="display-6 fw-bold text-center mb-1 heading">Good For People</h1>
+        <div style="border-bottom: 5px solid #FFE01D; width: 250px; margin: 0 auto;"></div>
+
+        <div class="mt-4">
+          <p class="HeroNew fs-6">
+            The Good For People category allows you to create a Leaderboard and title it to describe something about how
+            your brand is good for people. The title of the Leaderboard is meant to appeal to and connect with your
+            target audience.
+          </p>
+
+          <p class="HeroNew fs-6">
+            Before you do that, you must choose the primary section and the secondary section that your Leaderboard will
+            belong to.
+          </p>
+          <p class="HeroNew fs-6">
+            A leaderboard can be titled for example, "Consume 12 grams of protein from just 65 calories".
+          </p>
+          <p class="HeroNew fs-6">
+            Be VERY creative, the title can be broad or very specific. There are NO limits to how many Leaderboards you
+            can create. The more Leaderboards or Leaderboard Lists you are on, the more visibility your brand will have.
+            The higher the number of sales you have, the higher chance you have of getting new customers since you will
+            be displayed towards the top of both Leaderboard Lists and Leaderboards.
+          </p>
+        </div>
+
+        <div class="d-grid gap-2 mx-auto col-4">
+          <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
