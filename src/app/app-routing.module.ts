@@ -57,6 +57,10 @@ import { AddDiscountProductImageUploadComponent } from './component/add-discount
 import { EditDiscountProductComponent } from './component/edit-discount-product/edit-discount-product.component';
 import { PreviewDiscountComponent } from './component/preview-discount/preview-discount.component';
 import { AllBrandsComponent } from './component/all-brands/all-brands.component';
+import { DiscountListComponent } from './component/discount-list/discount-list.component';
+import { DiscountListDetailsComponent } from './component/discount-list-details/discount-list-details.component';
+import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-details-level-two/discount-list-details-level-two.component';
+import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
 
 const routes: Routes = [
   // {
@@ -255,6 +259,21 @@ const routes: Routes = [
   },
   {
     path: 'view/leaderboards/:slug', component: LeaderboardsComponent
+  },
+  {
+    path: 'discount/list', component: DiscountListComponent
+  },
+  {
+    path: 'discount/list/details/:id', component: DiscountListDetailsComponent
+  },
+  {
+    path: 'discount/list/details/:id', component: DiscountListDetailsComponent
+  },
+  {
+    path: 'discount/list/details/level/two/:id/:oneid', component: DiscountListDetailsLevelTwoComponent
+  },
+  {
+    path: 'discount/list/details/level/three/:id/:twoid', component: DiscountListDetailsLevelThreeComponent
   },
 
   //lazy loading for buyer

@@ -1,0 +1,34 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="boxx mt-4">
+
+          <h1 class="display-6 fw-bold mb-1 heading">{{ title }}</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 300px;"></div>
+
+          <div class="">
+            <h4 class="text-secondary fs-6 fw-bold mt-4 HeroNew">
+              Click on a Category to view the Leaderboard that contains Brands that are currently offering a Product or
+              Discount Code.
+            </h4>
+          </div>
+
+          <p class="fw-bold mt-5 fs-5" *ngIf="loading">Loading...</p>
+
+          <ul class="mt-4 text-left" *ngIf="discounts && discounts.length > 0">
+            <li *ngFor="let item of discounts" class="text-left mb-2">
+              <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none"
+                routerLink="/discount/list/details/level/two/{{ id }}/{{ item.id }}">{{ item.lb_name }}</a>
+            </li>
+          </ul>
+
+          <p class="fw-bold mt-5 fs-5" *ngIf="!loading && discounts && discounts.length == 0">
+            Sorry No data Found.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

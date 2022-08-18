@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonRefresher } from '@ionic/angular';
 import { map, delay, retry } from "rxjs/operators";
 import Swal from 'sweetalert2';
 
