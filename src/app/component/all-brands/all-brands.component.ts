@@ -16,6 +16,7 @@ export class AllBrandsComponent implements OnInit {
   brands: any = []
   src: string = ''
   arc: boolean = false
+  loadingg: boolean = true
 
   constructor(
     private http: HttpClient,
@@ -23,18 +24,24 @@ export class AllBrandsComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
-  async ngOnInit() {
+   ngOnInit() {
+     this.getData()
 
+  }
+
+  async getData() {
+    this.loadingg = true
     await this.http.get(this.url).pipe(delay(500), retry(6)).toPromise().then(res => {
+      this.loadingg = false
       this.brands = res
     }).catch(error => {
+      this.loadingg = false
          // work with error
          Swal.fire({
           title: error.name,
           text: error.message
          })
      });
-
   }
 
   updateUrl(e: Event) {

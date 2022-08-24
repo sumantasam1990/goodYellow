@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>();
+
+  email: string = ''
+  pass: string = ''
+
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private auth: AuthServiceService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.auth.loginBuyerUser(this.email, this.pass);
   }
 
 }

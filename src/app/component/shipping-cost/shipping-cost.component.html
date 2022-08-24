@@ -1,0 +1,91 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Shipping Cost</h1>
+
+          <div style="border-bottom: 5px solid #FFE01D; width: 300px; margin: 0 auto;"></div>
+
+          <div class="w-80">
+            <p class="text-dark fs-5 text-primary fw-bold text-center mt-4 HeroNew mb-4" style="line-height: 28px;">
+              ⭐ Set your shipping cost in USD. Eg. Min quantity: 1 Max Quantity 5 Cost is $5.99. Default value is 0 =
+              Free.
+            </p>
+          </div>
+
+          <div class="row mt-4 jumborton">
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Min Quantity*</label>
+                <select class="form-control" [(ngModel)]="shipping_cost_from_quantity">
+                  <option *ngFor="let i of from_numbers">{{ i }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Max Quantity*</label>
+                <select class="form-control" [(ngModel)]="shipping_cost_to_quantity">
+                  <option *ngFor="let i of to_numbers">{{ i }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Cost*</label>
+                <input type="number" [(ngModel)]="shipping_cost" class="form-control"
+                  placeholder="*Shipping Cost eg. 20">
+
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 col-4 mt-3">
+              <button (click)="add_more()" type="button" class="btn btn-secondary fw-bold font_family">Add more</button>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Min Shipping Quantity</th>
+                    <th>Max Shipping Quantity</th>
+                    <th>Shipping Cost</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let item of data">
+                    <td>{{ item.ship_from_quantity }}</td>
+                    <td>{{ item.ship_to_quantity }}</td>
+                    <td>{{ item.ship_cost }}</td>
+                    <td>
+                      <a class="btn btn-danger btn-sm" (click)="delete(item.id)">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+            <!-- <button [disabled]="disabled" type="button" class="btn btn-warning btn-lg"> Save and Come Back</button> -->
+            <button [disabled]="disabled" (click)="next()" type="button" class="btn btn-warning btn-lg">
+              Next</button>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

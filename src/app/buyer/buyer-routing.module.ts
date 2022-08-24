@@ -9,8 +9,17 @@ import { OrdersComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
 import { SignupComponent } from './signup/signup.component';
 import { ChangeMembershipDetailsComponent } from './change-membership-details/change-membership-details.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { SubscriptionsPastComponent } from './subscriptions-past/subscriptions-past.component';
+import { SubscriptionsCreditsComponent } from './subscriptions-credits/subscriptions-credits.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 const routes: Routes = [
+  {
+    path: '', redirectTo: 'my/account', pathMatch: 'full'
+  },
   {
     path: 'login', component: LoginComponent
   },
@@ -34,7 +43,20 @@ const routes: Routes = [
   },
   {
     path: 'change/membership/details', component: ChangeMembershipDetailsComponent
-  }
+  },
+  {
+    path: 'current/subscriptions', component: SubscriptionsComponent
+  },
+  {
+    path: 'past/subscriptions', component: SubscriptionsPastComponent
+  },
+  {
+    path: 'subscriptions/credits/left', component: SubscriptionsCreditsComponent
+  },
+  {
+    path: 'checkout/:uid', component: CheckoutComponent
+  },
+
 ];
 
 @NgModule({

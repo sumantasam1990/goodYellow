@@ -61,6 +61,7 @@ import { DiscountListComponent } from './component/discount-list/discount-list.c
 import { DiscountListDetailsComponent } from './component/discount-list-details/discount-list-details.component';
 import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-details-level-two/discount-list-details-level-two.component';
 import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
+import { ShippingCostComponent } from './component/shipping-cost/shipping-cost.component';
 
 const routes: Routes = [
   // {
@@ -72,127 +73,130 @@ const routes: Routes = [
     path: '', redirectTo: 'partners', pathMatch: 'full',
   },
   {
-    path: 'partners', component: VendorHomeComponent, data: {state:  'home'}
+    path: 'partners', component: VendorHomeComponent, data: {state:  'home'}, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'discover/brands/leaderboards/:name', component: BrandsComponent, data: {state:  'brands'}
+    path: 'discover/brands/leaderboards/:name', component: BrandsComponent, data: {state:  'brands'}, canActivate: [LoginOrNotGuard]
   },
+  // {
+  //   path: '', component: LoginComponent
+  // },
   {
-    path: '', component: LoginComponent, canActivate: [LoginOrNotGuard]
-  },
-  {
-    path: 'create-vendor-account', component: CreateVendorComponent
+    path: 'create-vendor-account', component: CreateVendorComponent, canActivate: [LoginOrNotGuard]
   },
   {
     path: 'vendor/email/verification/:token', component: EmailVerificationComponent
   },
   {
-    path: 'login', component: LoginComponent,
+    path: 'login', component: LoginComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-create-leaderboard', component: Step2Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-create-leaderboard', component: Step2Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-photos', component: Step3Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-photos', component: Step3Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-photos/:storefront', component: Step3Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-photos/:storefront', component: Step3Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-brand-photos', component: Step4Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-brand-photos', component: Step4Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-brand-photos/:storefront', component: Step4Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-brand-photos/:storefront', component: Step4Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-founders', component: Step5Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-founders', component: Step5Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-founders/:storefront', component: Step5Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-founders/:storefront', component: Step5Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-people', component: Step6Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-people', component: Step6Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
     path: 'vendor-signup-people/:storefront', component: Step6Component, canActivate: [AuthGuard]
   },
   {
-    path: 'vendor-signup-story', component: Step7Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-story', component: Step7Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-story/:storefront', component: Step7Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-story/:storefront', component: Step7Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-video', component: Step8Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-video', component: Step8Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-video/:storefront', component: Step8Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-video/:storefront', component: Step8Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-links', component: Step9Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-links', component: Step9Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-links/:storefront', component: Step9Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-links/:storefront', component: Step9Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-faqs', component: Step10Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-faqs', component: Step10Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-signup-faqs/:storefront', component: Step10Component, canActivate: [AuthGuard]
+    path: 'vendor-signup-faqs/:storefront', component: Step10Component, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor-connect-stripe', component: ConnectStripeComponent, canActivate: [AuthGuard]
+    path: 'vendor-connect-stripe', component: ConnectStripeComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'create-product', component: CreateproductComponent, canActivate: [AuthGuard]
+    path: 'create-product', component: CreateproductComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'create-product-image-upload/:id', component: CreateProductImageComponent, canActivate: [AuthGuard]
+    path: 'create-product-image-upload/:id', component: CreateProductImageComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'create-product-attributes/:id', component: CreateProductAttributesComponent, canActivate: [AuthGuard]
+    path: 'create-product-shipping-cost/:id', component: ShippingCostComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'create-product-variations/:id', component: CreateProductVariationsComponent, canActivate: [AuthGuard]
+    path: 'create-product-attributes/:id', component: CreateProductAttributesComponent, canActivate: [AuthGuard, LoginOrNotGuard]
+  },
+  {
+    path: 'create-product-variations/:id', component: CreateProductVariationsComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
     path: 'preview-product/:id', component: PreviewProductComponent
   },
   {
-    path: 'vendor-storefront', component: StorefrontComponent, canActivate: [AuthGuard]
+    path: 'vendor-storefront', component: StorefrontComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'create-leaderboard', component: CreateleaderboardComponent, canActivate: [AuthGuard]
+    path: 'create-leaderboard', component: CreateleaderboardComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'edit-product/:pid', component: EditProductComponent, canActivate: [AuthGuard]
+    path: 'edit-product/:pid', component: EditProductComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
     path: 'vendor-leaderboards', component: LeaderboardsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'vendor-orders', component: OrdersComponent, canActivate: [AuthGuard]
+    path: 'vendor-orders', component: OrdersComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor/edit/description', component: VendorDescriptionComponent, canActivate: [AuthGuard]
+    path: 'vendor/edit/description', component: VendorDescriptionComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'vendor/public/founders', component: PublicFoundersComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/founders', component: PublicFoundersComponent,
   },
   {
-    path: 'vendor/public/people', component: PublicPeopleComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/people', component: PublicPeopleComponent,
   },
   {
-    path: 'vendor/public/story', component: PublicStoryComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/story', component: PublicStoryComponent,
   },
   {
-    path: 'vendor/public/faqs', component: PublicFaqsComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/faqs', component: PublicFaqsComponent,
   },
   {
-    path: 'vendor/public/brand/video', component: PublicBrandVideoComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/brand/video', component: PublicBrandVideoComponent,
   },
   {
-    path: 'vendor/public/brand/photos', component: PublicBrandPhotosComponent, canActivate: [AuthGuard]
+    path: 'vendor/public/brand/photos', component: PublicBrandPhotosComponent,
   },
   {
     path: 'vendor/preview/storefront', component: PreviewStorefrontComponent
@@ -201,25 +205,25 @@ const routes: Routes = [
     path: 'storefront/:compname', component: PreviewStorefrontComponent
   },
   {
-    path: 'vendor/signup/first', component: SignupFirstComponent
+    path: 'vendor/signup/first', component: SignupFirstComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/signup/second', component: SignupSecondComponent
+    path: 'vendor/signup/second', component: SignupSecondComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/signup/three', component: SignupThreeComponent
+    path: 'vendor/signup/three', component: SignupThreeComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/signup/fourth', component: SignupFourthComponent
+    path: 'vendor/signup/fourth', component: SignupFourthComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/signup/fifth', component: SignupFifthComponent
+    path: 'vendor/signup/fifth', component: SignupFifthComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/signup/sixth', component: SignupSixthComponent
+    path: 'vendor/signup/sixth', component: SignupSixthComponent, canActivate: [LoginOrNotGuard]
   },
   {
-    path: 'vendor/forgot/password', component: ForgotpasswordComponent
+    path: 'vendor/forgot/password', component: ForgotpasswordComponent, canActivate: [LoginOrNotGuard]
   },
   {
     path: 'vendor/forgot/password/done/:token', component: ChangepasswordComponent
@@ -243,13 +247,13 @@ const routes: Routes = [
     path: 'discover/brands/level/three/:id', component: LevelThreeComponent
   },
   {
-    path: 'product/discount/add', component: AddDiscountProductComponent,
+    path: 'product/discount/add', component: AddDiscountProductComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'upload/images/:id', component: AddDiscountProductImageUploadComponent
+    path: 'upload/images/:id', component: AddDiscountProductImageUploadComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
-    path: 'edit/discount/:id', component: EditDiscountProductComponent
+    path: 'edit/discount/:id', component: EditDiscountProductComponent, canActivate: [AuthGuard, LoginOrNotGuard]
   },
   {
     path: 'preview/discount/:id', component: PreviewDiscountComponent

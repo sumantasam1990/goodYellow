@@ -14,11 +14,16 @@ export class PreviewStorefrontComponent implements OnInit {
 
   uid: string | null = localStorage.getItem('u_id')
   token: string | null = localStorage.getItem('token')
+  b_uid: string | null = localStorage.getItem('b_u_id')
   url: any = 'https://administrator.goodyellowco.com/api/vendor/storefront/preview/'
   deleteurl: any = 'https://administrator.goodyellowco.com/api/u/vendor/product/delete/'
   disabled: boolean = false
   vendorData: any = []
   slug: string | null = ''
+  loading: boolean = true
+
+  subscribeUrl: string = 'https://administrator.goodyellowco.com/api/buyer/subscribe/brand/storefront/'
+  subscribed: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -32,9 +37,17 @@ export class PreviewStorefrontComponent implements OnInit {
   }
 
   async getVendorInfo() {
-    await this.http.get(this.url + this.slug).pipe(delay(100), retry(3)).toPromise().then(res => {
+    this.loading = true
+    await this.http.get(this.url + this.slug + '/' + this.b_uid).pipe(delay(100), retry(3)).toPromise().then(res => {
+      this.loading = false
       this.vendorData = res
+      if(this.vendorData.subscribed == 'Yes') {
+        this.subscribed = true
+      } else {
+        this.subscribed = false
+      }
     }).catch(error => {
+      this.loading = false
          // work with error
          Swal.fire({
           title: error.name,
@@ -84,6 +97,41 @@ export class PreviewStorefrontComponent implements OnInit {
 
   public_brand_photo() {
     this.router.navigate(['vendor/public/brand/photos'])
+  }
+
+  async subscribe() {
+    if(this.b_uid != '') {
+      await this.http.get(this.subscribeUrl + this.slug + '/' + this.b_uid).pipe(delay(250), retry(4)).toPromise().then((res: any) => {
+
+        if(res.msg == 'success') {
+
+          Swal.fire({
+            title: 'Subscribed',
+            text: 'You have successfully subscribed to this brand. Now you can purchase any products from this brand.',
+            icon: 'success'
+          }).then(() => {
+            this.subscribed = true
+          })
+
+        } else {
+          Swal.fire({
+            title: 'Error!',
+            text: res.msg,
+            icon: 'error'
+          }).then(() => {
+            this.subscribed = false
+          })
+        }
+
+      }).catch(error => {
+          // work with error
+          Swal.fire({
+            title: error.name,
+            text: error.message
+          })
+          this.subscribed = false
+      });
+    }
   }
 
 }

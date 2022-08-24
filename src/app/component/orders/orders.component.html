@@ -1,7 +1,7 @@
 <div class="container-fluid bg-custom">
   <div class="container h-100">
     <div class="row h-100">
-      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+      <div class="col-md-12 mx-auto p-2 d-flex _logbox">
         <div class="box">
 
 
@@ -11,40 +11,223 @@
 
           <div class="w-80">
             <p class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
-              Here you can see the list of outstanding orders, shipped orders and canceled orders.
+              Here you can see the list of your outstanding orders, shipped orders and canceled orders.
             </p>
           </div>
 
 
           <div class="mt-5">
-            <h2 class="fw-bold fs-4 heading">Outstanding Orders</h2>
+            <h2 class="fw-bold fs-4 heading">Placed Orders</h2>
             <div class="devider-left"></div>
-            <h4 class="fs-5 mt-3"><a class="btn btn-link text-dark text-decoration-none" href="">No orders found.</a>
+
+            <div *ngIf="orders.length > 0" class="table-responsive mt-4">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+
+                    <th>#</th>
+                    <th style="width: 200px;">Product Name</th>
+
+                    <th>Product Price (Including Shipping)</th>
+                    <!-- <th>Order Total</th> -->
+                    <th>Order Quantity</th>
+                    <th>Shipping Address</th>
+                    <th>Receipt URL</th>
+
+                    <th>Buyer Name</th>
+                    <!-- <th>#Order ID</th>
+                    <th>#Payment Transaction ID</th> -->
+
+                    <th>Order Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let order of orders; let i = index;">
+
+                    <td>{{ i+1 }}</td>
+                    <td style="width: 200px;">
+                      <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
+                        {{ order.p_name }}
+                      </a>
+                    </td>
+                    <td>${{ order.product_discount_price }}</td>
+                    <!-- <td>${{ order.order_price }}</td> -->
+                    <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
+                    <td>
+                      <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download
+                        Receipt</a>
+                    </td>
+
+                    <td>
+                      {{ order.fname }} {{ order.lname }}
+                      <p>{{ order.email }}</p>
+                    </td>
+                    <!-- <td>{{ order.order_uniq }}</td>
+                    <td>{{ order.tran_id }}</td> -->
+
+                    <td class="text-primary fw-bold font_family">
+                      <select [(ngModel)]="order_status" class="form-control"
+                        (change)="order_status_change(order.order_id)">
+                        <option value="">Select</option>
+                        <option value="1">Shipped</option>
+                        <option value="2">Cancelled</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+
+
+              </table>
+            </div>
+
+            <h4 *ngIf="orders.length == 0" class="fs-5 mt-3"><a class="btn btn-link text-dark text-decoration-none"
+                href="">No
+                orders found.</a>
             </h4>
           </div>
 
           <div class="mt-5">
             <h2 class="fw-bold fs-4 heading">Shipped Orders</h2>
             <div class="devider-left"></div>
-            <h4 class="fs-5 mt-3"><a class="btn btn-link text-dark text-decoration-none" href="">No orders found.</a>
+
+
+            <div *ngIf="shipped_orders.length > 0" class="table-responsive mt-4">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+
+                    <th>#</th>
+                    <th style="width: 200px;">Product Name</th>
+
+                    <th>Product Price</th>
+                    <!-- <th>Order Total</th> -->
+                    <th>Order Quantity</th>
+                    <th>Shipping Address</th>
+                    <th>Receipt URL</th>
+
+                    <th>Buyer Name</th>
+                    <!-- <th>#Order ID</th>
+                    <th>#Payment Transaction ID</th> -->
+
+                    <th>Order Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let order of shipped_orders; let i = index;">
+
+                    <td>{{ i+1 }}</td>
+                    <td style="width: 200px;">
+                      <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
+                        {{ order.p_name }}
+                      </a>
+                    </td>
+                    <td>${{ order.product_discount_price }}</td>
+                    <!-- <td>${{ order.order_price }}</td> -->
+                    <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
+                    <td>
+                      <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download
+                        Receipt</a>
+                    </td>
+
+                    <td>
+                      {{ order.fname }} {{ order.lname }}
+                      <p>{{ order.email }}</p>
+                    </td>
+                    <!-- <td>{{ order.order_uniq }}</td>
+                    <td>{{ order.tran_id }}</td> -->
+
+                    <td class="text-warning fw-bold font_family">
+                      <select [(ngModel)]="order_status" class="form-control"
+                        (change)="order_status_change(order.order_id)">
+                        <option value="">Select</option>
+                        <option value="2">Cancelled</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+
+
+              </table>
+            </div>
+
+            <h4 *ngIf="shipped_orders.length == 0" class="fs-5 mt-3"><a
+                class="btn btn-link text-dark text-decoration-none" href="">No
+                orders found.</a>
             </h4>
+
           </div>
 
           <div class="mt-5">
             <h2 class="fw-bold fs-4 heading">Cancelled Orders</h2>
             <div class="devider-left"></div>
-            <h4 class="fs-5 mt-3"><a class="btn btn-link text-dark text-decoration-none" href="">No orders found.</a>
-            </h4>
-          </div>
 
-          <div class="row">
+            <div *ngIf="cancelled_orders.length > 0" class="table-responsive mt-4">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
 
-            <div class="col-md-12">
-              <div class="d-grid gap-2">
-                <a routerLink="/vendor-storefront" class="btn btn-warning mt-3 btn-lg">Return To Storefront</a>
-              </div>
+                    <th>#</th>
+                    <th style="width: 200px;">Product Name</th>
+
+                    <th>Product Price</th>
+                    <!-- <th>Order Total</th> -->
+                    <th>Order Quantity</th>
+                    <th>Shipping Address</th>
+                    <th>Receipt URL</th>
+
+                    <th>Buyer Name</th>
+                    <!-- <th>#Order ID</th>
+                    <th>#Payment Transaction ID</th> -->
+
+                    <th>Order Status</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let order of cancelled_orders; let i = index;">
+
+                    <td>{{ i+1 }}</td>
+                    <td style="width: 200px;">
+                      <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
+                        {{ order.p_name }}
+                      </a>
+                    </td>
+                    <td>${{ order.product_discount_price }}</td>
+                    <!-- <td>${{ order.order_price }}</td> -->
+                    <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
+                    <td>
+                      <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download
+                        Receipt</a>
+                    </td>
+
+                    <td>
+                      {{ order.fname }} {{ order.lname }}
+                      <p>{{ order.email }}</p>
+                    </td>
+                    <!-- <td>{{ order.order_uniq }}</td>
+                    <td>{{ order.tran_id }}</td> -->
+
+                    <td class="text-danger fw-bold font_family">Order Cancelled</td>
+                  </tr>
+                </tbody>
+
+
+              </table>
             </div>
+
+            <h4 *ngIf="cancelled_orders.length == 0" class="fs-5 mt-3"><a
+                class="btn btn-link text-dark text-decoration-none" href="">No
+                orders found.</a>
+            </h4>
+
           </div>
+
+
 
 
 

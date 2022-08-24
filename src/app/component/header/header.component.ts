@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false
   changeHeader: boolean = false
+  changeBuyerHeader: boolean = false
+  loggedInBuyerId: string | null = localStorage.getItem('b_u_id') // buyer_id
 
   constructor(
     private router: Router,
@@ -22,15 +24,21 @@ export class HeaderComponent implements OnInit {
     this.auth.getEmitter().subscribe((obj) => {
       if(obj.token && obj.token != '') {
         this.changeHeader = true
+      } else if(obj.buyer_token && obj.buyer_token != '') {
+        this.changeBuyerHeader = true
       } else {
         this.changeHeader = false
+        this.changeBuyerHeader = false
       }
     });
 
     if(localStorage.getItem('token') && localStorage.getItem('email')) {
       this.changeHeader = true
+    } else if(localStorage.getItem('b_token') && localStorage.getItem('b_email')) {
+      this.changeBuyerHeader = true
     } else {
       this.changeHeader = false
+      this.changeBuyerHeader = false
     }
   }
 
@@ -40,6 +48,14 @@ export class HeaderComponent implements OnInit {
 
   signout() {
     this.auth.logout();
+  }
+
+  signin_buyer() {
+    this.router.navigate(['/u/login'])
+  }
+
+  signout_buyer() {
+    this.auth.logoutBuyer();
   }
 
 }

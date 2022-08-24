@@ -12,8 +12,8 @@ export class LoginOrNotGuardService implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-    if (localStorage.getItem('token')) {
-      //this.router.navigate(['vendor-storefront']);
+    if (localStorage.getItem('b_token')) {
+      this.router.navigate(['/u']);
       return false;
     }
     return true;

@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="loading">
+  <img src="../assets/loading.svg">
+</div>
 <div class="container-fluid mt-4 mb-4">
   <div class="container">
     <div class="row">
@@ -19,8 +22,16 @@
       </div>
       <div class="col-md-9 mt-4 main_part">
         <h1 class="fs-1 fw-bold heading brandName">{{ vendorData.brand }}</h1>
-        <p class="fw-bold fs-5 mb-4">Highest Discount: <span class="text-warning">{{ vendorData.max_discount }}%</span>
+        <p class="mt-2 fs-6 text-secondary">{{ vendorData.total_subscribers }} subscribers</p>
+
+        <p class="fw-bold fs-5 mb-3">Highest Discount: <span class="text-warning">{{ vendorData.max_discount }}%</span>
         </p>
+
+        <p *ngIf="subscribed" class="mb-4"><a class="btn btn-warning fw-bold font_family">Subscribed</a>
+        </p>
+        <p *ngIf="!subscribed" class="mb-4"><a (click)="subscribe()"
+            class="btn btn-danger fw-bold font_family">Subscribe</a></p>
+
         <p class="fs-6 text-secondary mb-4" style="margin-top: -8px;">{{ vendorData.brand_description }}</p>
 
       </div>

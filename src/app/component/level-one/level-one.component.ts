@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LevelOneComponent implements OnInit {
 
-  url: string = 'https://administrator.goodyellowco.com/api/level/one/'
+  //url: string = 'https://administrator.goodyellowco.com/api/level/one/'
+  url: string = 'https://administrator.goodyellowco.com/api/claudia/level/one/subscribers/brands/'
   loading: boolean = false
   leaderboards: any = []
   id: string | null = ''
@@ -23,6 +24,7 @@ export class LevelOneComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')
     this.http.get(this.url + this.id).subscribe(res => {
+      console.log(res)
       this.leaderboards = res
     })
   }

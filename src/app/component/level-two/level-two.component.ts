@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LevelTwoComponent implements OnInit {
 
-  url: string = 'https://administrator.goodyellowco.com/api/level/two/'
+  //url: string = 'https://administrator.goodyellowco.com/api/level/two/'
+  url: string = 'https://administrator.goodyellowco.com/api/claudia/level/two/subscribers/brands/'
   loading: boolean = false
   leaderboards: any = []
   id: string | null = ''

@@ -12,6 +12,9 @@ export class AuthServiceService {
   url: string = 'https://administrator.goodyellowco.com/api/vendor/signin'
   signup_url: string = 'https://administrator.goodyellowco.com/api/vendor/signup'
 
+  buyerUrl: string = 'https://administrator.goodyellowco.com/api/buyer/signin'
+  buyerSignupUrl: string = 'https://administrator.goodyellowco.com/api/buyer/signup'
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -19,6 +22,13 @@ export class AuthServiceService {
 
   // …
   loginUser(username: string, password: string) {
+    // first logging out buyer login
+    localStorage.clear()
+    // send event emit
+    var customData = {}
+    this.fireIsLoggedIn.emit(customData);
+    // end brand login out
+
     const myheader = new HttpHeaders();
     //myheader.set('Access-Control-Allow-Origin', '*');
     myheader.set('Content-Type', 'application/x-www-form-urlencoded');
@@ -94,6 +104,14 @@ export class AuthServiceService {
   }
 
   registerUser(fname: string,lname: string,email: string,c_pass: string,company: string) {
+
+    // first logging out buyer login
+    localStorage.clear()
+    // send event emit
+    var customData = {}
+    this.fireIsLoggedIn.emit(customData);
+    // end brand login out
+
     const myheader = new HttpHeaders();
       //myheader.set('Access-Control-Allow-Origin', '*');
       myheader.set('Content-Type', 'application/x-www-form-urlencoded');
@@ -132,5 +150,119 @@ export class AuthServiceService {
 
 
       });
+  }
+
+  //--------------------- Buyer Auth -------------------------//
+
+  registerBuyerUser(fname: string,lname: string,email: string,c_pass: string,street: string, city: string, state: string, zip: string, phone: string, promo: string) {
+
+    // first logging out buyer login
+    localStorage.clear()
+    // send event emit
+    var customData = {}
+    this.fireIsLoggedIn.emit(customData);
+    // end brand login out
+
+    const myheader = new HttpHeaders();
+      //myheader.set('Access-Control-Allow-Origin', '*');
+      myheader.set('Content-Type', 'application/x-www-form-urlencoded');
+
+      const formData = new FormData();
+      formData.append('fname', fname);
+      formData.append('lname', lname);
+      formData.append('email', email);
+      formData.append('password', c_pass);
+      formData.append('street', street);
+      formData.append('city', city);
+      formData.append('state', state);
+      formData.append('zip', zip);
+      formData.append('phone', phone);
+      formData.append('promo', promo);
+
+      this.http.post<any>(this.buyerSignupUrl, formData, {
+        headers: myheader
+      }).subscribe(response => {
+
+
+        if(response.id) {
+          localStorage.setItem("b_token", response.token)
+          localStorage.setItem("b_email", response.email);
+          localStorage.setItem("b_u_id", response.id);
+
+          // send event emit
+          var customData = {
+            'buyer_token': response.token,
+          }
+          this.fireIsLoggedIn.emit(customData);
+
+          this.router.navigate(['/u'])
+        } else if(response.err) {
+          Swal.fire({
+            text: response.err,
+            icon: 'error'
+          })
+        } else {
+          Swal.fire({
+          title: 'Please correct below error.',
+          color: 'red',
+          html: `<p>${response.fname ? response.fname[0] : ''}</p> <p>${response.lname ? response.lname[0] : ''}</p> <p>${response.email ? response.email[0] : ''}</p> <p>${response.password ? response.password[0] : ''}</p> <p>${response.street ? response.street[0] : ''}</p> <p>${response.city ? response.city[0] : ''}</p> <p>${response.state ? response.state[0] : ''}</p> <p>${response.zip ? response.zip[0] : ''}</p> <p>${response.phone ? response.phone[0] : ''}</p>`,
+
+        })
+        }
+
+
+      });
+  }
+
+  loginBuyerUser(username: string, password: string) {
+    // first logging out brand login
+    localStorage.clear()
+    // send event emit
+    var customData = {}
+    this.fireIsLoggedIn.emit(customData);
+    // end brand login out
+
+
+    const myheader = new HttpHeaders();
+    //myheader.set('Access-Control-Allow-Origin', '*');
+    myheader.set('Content-Type', 'application/x-www-form-urlencoded');
+
+    const formData = new FormData();
+    formData.append('email', username);
+    formData.append('password', password);
+
+     this.http.post<any>(this.buyerUrl, formData, {
+      headers: myheader
+    }).subscribe(response => {
+      if(response.data) {
+        localStorage.setItem("b_token", response.data[0].token)
+        localStorage.setItem("b_email", response.data[0].email);
+        localStorage.setItem("b_u_id", response.data[0].id);
+
+        // send event emit
+        var customData = {
+          'buyer_token': response.data[0].token,
+        }
+        this.fireIsLoggedIn.emit(customData);
+
+        this.router.navigate(['/u'])
+
+      } else {
+        Swal.fire({
+          text: 'Please check your email or password.',
+          icon: 'error'
+        })
+      }
+
+
+    });
+  }
+
+  logoutBuyer() {
+    localStorage.clear()
+    // send event emit
+      var customData = {}
+      this.fireIsLoggedIn.emit(customData);
+      this.router.navigate(['/u/login'])
   }
 }

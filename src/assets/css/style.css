@@ -5,6 +5,11 @@ body {
 
 }
 
+h4,
+h3 {
+  font-size: 18px;
+}
+
 ul li {
   list-style: none;
 }
@@ -93,7 +98,7 @@ label {
 .bg-custom {
   padding-bottom: 40px;
   background-color: #FFF7C6;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 input,

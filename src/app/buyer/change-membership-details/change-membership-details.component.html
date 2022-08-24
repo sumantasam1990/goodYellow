@@ -4,12 +4,17 @@
       <div class="col-md-8 mx-auto p-2 d-flex _logbox mt-4">
 
         <div class="box text-center">
-          <h1 class="display-6 fw-bold text-center mb-1 heading">Change Membership Details</h1>
-          <div style="border-bottom: 5px solid #FFE01D; width: 180px; margin: 0 auto;"></div>
+          <h1 class="display-6 fw-bold text-center mb-1 heading"> Membership Details</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 280px; margin: 0 auto;"></div>
 
           <div class="w-80">
-            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew">
-              Your Membership is paid through August 13, 2022
+            <h4 class="text-dark fs-6 fw-bold text-center mt-4 HeroNew" *ngIf="exp.data.expiry == 'No'">
+              Your Membership is paid through {{ exp.data.exp_date }}
+              <!-- Your don't have any membership yet -->
+            </h4>
+
+            <h4 class="text-danger fs-6 fw-bold text-center mt-4 HeroNew" *ngIf="exp.data.expiry == 'Yes'">
+              Your Membership has been expired at {{ exp.data.exp_date }}.
               <!-- Your don't have any membership yet -->
             </h4>
 
@@ -17,8 +22,9 @@
           </div>
 
           <div class="mt-5 d-grid gap-2 mx-auto col-5">
-            <a class="btn btn-warning btn-lg">Cancel Membership</a>
-            <a class="btn btn-warning btn-lg mt-3">Change Billing</a>
+            <a class="btn btn-warning btn-lg" *ngIf="exp.data.expiry == 'No'">Cancel Membership</a>
+            <a class="btn btn-warning btn-lg" *ngIf="exp.data.expiry == 'Yes'">Start Membership</a>
+            <!-- <a class="btn btn-warning btn-lg mt-3">Change Billing</a> -->
 
           </div>
 

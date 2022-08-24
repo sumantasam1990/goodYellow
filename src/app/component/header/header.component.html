@@ -15,7 +15,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/discover/brands">Discover Brands</a>
+          <a class="nav-link" routerLink="/discover/brands">Discover Brands</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link active" routerLink="/leaderboards/Brand">Brands</a>
@@ -30,43 +30,60 @@
           <a class="nav-link" routerLink="/leaderboards/Good for people">Good For People</a>
         </li> -->
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="changeHeader">
           <a routerLink="/vendor-storefront" class="nav-link">My Storefront</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/vendor-orders">My Orders</a>
+        <li class="nav-item" *ngIf="changeHeader">
+          <a class="nav-link" routerLink="/vendor-orders">My Orders</a>
         </li>
 
 
-        <!-- <li class="nav-item">
-          <a class="nav-link active" routerLink="/u/cart">Cart</a>
-        </li>
-
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="changeBuyerHeader">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Account
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="/u/my/account">My Account</a></li>
             <li><a class="dropdown-item" routerLink="/u/change/password">Change Password</a></li>
-            <li><a class="dropdown-item" routerLink="/u/change/membership/details">Change Membership Details</a></li>
+            <li><a class="dropdown-item" routerLink="/u/change/membership/details"> Membership Details</a></li>
             <li><a class="dropdown-item" routerLink="/u/my/orders">My Order History</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <!-- <li><a class="dropdown-item"
+                href="https://administrator.goodyellowco.com/pay/subscription/{{ loggedInBuyerId }}/2443defddfdf">Monthly
+                Subscription</a>
+            </li> -->
+            <li><a class="dropdown-item" routerLink="/u/current/subscriptions">Current Subscriptions</a></li>
+            <li><a class="dropdown-item" routerLink="/u/past/subscriptions">Past Subscriptions</a></li>
+            <li><a class="dropdown-item" routerLink="/u/subscriptions/credits/left">Credits Left</a></li>
           </ul>
-        </li> -->
+        </li>
 
 
+        <li class="nav-item" *ngIf="changeBuyerHeader">
+          <a routerLink="/u/cart" class="btn btn-secondary">
+            <ion-icon style="font-size: 24px;" name="cart-outline"></ion-icon>
+            <p style="margin-top: 2px; float: right; font-size: 14px !important; margin-left: 2px;"> Cart</p>
+          </a>
+        </li>
+
+
+
+        <li class="nav-item" *ngIf="changeBuyerHeader">
+          <a (click)="signout_buyer()" class="btn btn-secondary">Sign Out</a>
+        </li>
+        <li class="nav-item" *ngIf="!changeBuyerHeader && !changeHeader">
+          <a (click)="signin_buyer()" class="btn btn-secondary">Sign In</a>
+        </li>
 
 
 
         <li class="nav-item" *ngIf="changeHeader">
           <a (click)="signout()" class="btn btn-secondary">Sign Out</a>
         </li>
-        <li class="nav-item" *ngIf="!changeHeader">
-          <a (click)="signin()" class="btn btn-secondary">Sign In</a>
+        <li class="nav-item" *ngIf="!changeHeader && !changeBuyerHeader">
+          <a (click)="signin()" class="btn btn-secondary">Brand Sign In</a>
         </li>
 
         <!-- <li class="nav-item">

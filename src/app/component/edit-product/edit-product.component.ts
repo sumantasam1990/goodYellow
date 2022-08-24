@@ -29,6 +29,7 @@ export class EditProductComponent implements OnInit {
   validdesc: string = ''
   validinventory: string = ''
   validshipping_cost: string = ''
+  validdiscount: string = ''
 
 
   price: string = ''
@@ -127,6 +128,8 @@ export class EditProductComponent implements OnInit {
           this.validdesc = response.product_description
           this.validinventory = response.inventory
           this.validshipping_cost = response.shipping_cost
+          this.validdiscount = response.discount_percentage
+
 
          }
 

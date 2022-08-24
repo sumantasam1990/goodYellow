@@ -1,0 +1,75 @@
+<div class="container-fluid bg-custom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox mt-4">
+
+        <div class="box">
+          <h1 class="display-5 fw-bold text-center mb-1 heading">Checkout For {{ brands.brand }}</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 400px; margin: 0 auto;"></div>
+
+          <div class="form-group mt-4 mb-3">
+            <label>
+              Shipping Address/Delivery Address*
+            </label>
+            <textarea [(ngModel)]="address" rows="4" class="form-control"
+              placeholder="*Note: Your full address with street no, name, PIN/Postal code, State, City etc."></textarea>
+            <span class="fs-6 font_family">*Note: Your full address with street no, name, PIN/Postal code, State,
+              City etc.</span>
+          </div>
+
+          <div class="form-group mb-3">
+            <label>
+              Phone Number*
+            </label>
+            <input [(ngModel)]="phone" type="phone" value="+1 " class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label>
+              Email Id*
+            </label>
+            <input [(ngModel)]="email" type="email" class="form-control" placeholder="john@example.com">
+          </div>
+
+          <hr />
+
+          <h1 class="fs-5 fw-bold text-center mb-1 font_family">Pay With Credit Card/Debit Card</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 400px; margin: 0 auto;"></div>
+
+          <div class="form-group mt-3 mb-3">
+            <label>
+              Card Number
+            </label>
+            <input [(ngModel)]="card_no" type="number" placeholder="4111111111111111" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label>
+              Card Expiry Month (MM)
+            </label>
+            <input [(ngModel)]="card_exp_month" type="number" placeholder="02" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label>
+              Card Expiry Year (YY)
+            </label>
+            <input [(ngModel)]="card_exp_year" type="number" placeholder="22" class="form-control">
+          </div>
+
+          <div class="form-group mb-3">
+            <label>
+              CVC/CVV
+            </label>
+            <input [(ngModel)]="card_cvv" type="number" placeholder="123" class="form-control">
+          </div>
+
+          <div class="d-grid gap-2 mx-auto col-6 mt-4">
+            <button [disabled]="disabled" type="button" class="btn btn-warning btn-lg" (click)="checkout()">Pay
+              ${{ brands.total }}</button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>

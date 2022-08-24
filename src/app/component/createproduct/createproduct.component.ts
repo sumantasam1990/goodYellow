@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { range } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createproduct',
@@ -27,6 +29,7 @@ export class CreateproductComponent implements OnInit {
   validdesc: string = ''
   validinventory: string = ''
   validshipping_cost: string = ''
+  validdiscount: string = ''
 
 
   price: string = ''
@@ -44,14 +47,20 @@ export class CreateproductComponent implements OnInit {
   imp_details: string = ''
   excl_discount: string = ''
   excl_prod: string = ''
+  shipping_cost_from_quantity: string = ''
+  shipping_cost_to_quantity: string = ''
+  // numbers: any = []
 
+  from_numbers: Array<any> = [];
+  to_numbers: Array<any> = [];
 
 
   constructor(
     private http: HttpClient,
     private router: Router,
   ) {
-
+    this.from_numbers = Array.from({length:500},(v,k)=>k+1);
+    this.to_numbers = Array.from({length:500},(v,k)=>k+1);
   }
 
   ngOnInit(): void {
@@ -127,6 +136,7 @@ export class CreateproductComponent implements OnInit {
           this.validdesc = response.product_description
           this.validinventory = response.inventory
           this.validshipping_cost = response.shipping_cost
+          this.validdiscount = response.discount_percentage
 
          }
 
@@ -135,5 +145,7 @@ export class CreateproductComponent implements OnInit {
     }
 
   }
+
+
 
 }

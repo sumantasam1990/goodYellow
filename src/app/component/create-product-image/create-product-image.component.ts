@@ -118,7 +118,9 @@ export class CreateProductImageComponent implements OnInit {
   }
 
   next() {
-    this.router.navigate(['create-product-attributes', this.productid])
+    this.router.navigate(['create-product-shipping-cost', this.productid])
+
+    //this.router.navigate(['create-product-attributes', this.productid])
   }
 
   async delete(id: number) {

@@ -32,13 +32,6 @@
               placeholder="*Shipping Time (how soon after order is placed will it ship out).">
           </div>
 
-          <div class="form-group">
-            <label>Shipping Cost*</label>
-            <input type="text" [(ngModel)]="shipping_cost" class="form-control" placeholder="*Shipping Cost eg. 20">
-            <small class="fw-bold">
-              Set your shipping cost in USD. Eg. 20. Default value is 0 = Free.
-            </small>
-          </div>
 
           <!-- <div class="form-group">
             <label></label>
@@ -75,7 +68,7 @@
 
           <div class="form-group">
             <label>Inventory*</label>
-            <input type="text" [(ngModel)]="inventory" class="form-control"
+            <input type="number" [(ngModel)]="inventory" class="form-control"
               placeholder="*Inventory (number of units available)">
           </div>
 
@@ -90,7 +83,7 @@
 
           <div class="form-group">
             <label>Discount*</label>
-            <input type="text" [(ngModel)]="disc_percentage" class="form-control" placeholder="Discount Percentage">
+            <input type="number" [(ngModel)]="disc_percentage" class="form-control" placeholder="Discount Percentage">
           </div>
 
           <!-- <div class="form-group">
@@ -133,6 +126,7 @@
               <li *ngIf="validdesc">{{ validdesc[0] }}</li>
               <li *ngIf="validinventory">{{ validinventory[0] }}</li>
               <li *ngIf="validshipping_cost">{{ validshipping_cost[0] }}</li>
+              <li *ngIf="validdiscount">{{ validdiscount[0] }}</li>
 
             </ul>
           </div>

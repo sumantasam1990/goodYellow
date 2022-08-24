@@ -1,0 +1,28 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Your Current Brand Subscriptions</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 400px; margin: 0 auto;"></div>
+
+
+          <div class="mt-5 text-center" *ngIf="data.length > 0">
+            <p *ngFor="let item of data">
+              <a class="btn btn-warning btn-lg fw-bold" routerLink="/storefront/{{ item.slug }}">{{ item.brand }}</a>
+              <span style="margin-left: 12px;" class="fs-5 fw-bold text-dark">{{ item.left }} left</span>
+            </p>
+
+          </div>
+
+          <p class="mt-4 fs-6 text-center fw-bold" *ngIf="data.length == 0">No subscriptions.</p>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

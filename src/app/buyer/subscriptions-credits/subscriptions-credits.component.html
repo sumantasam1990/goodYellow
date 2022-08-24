@@ -1,0 +1,33 @@
+<div class="container-fluid bg-custom">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-md-6 mx-auto p-2 d-flex _logbox">
+        <div class="box">
+
+          <h1 class="display-6 fw-bold text-center mb-1 heading">Unused Subscription Credits Left</h1>
+          <div style="border-bottom: 5px solid #FFE01D; width: 400px; margin: 0 auto;"></div>
+
+
+          <div class="mt-5 text-center">
+
+            <p class="fs-4 fw-bold" style="font-family: HeroNewExtraBlack;" *ngIf="data.length > 0">
+              {{ data[0].credits }} Credits
+            </p>
+
+            <p class="fs-4 fw-bold" *ngIf="data.length == 0">
+              0 Credits
+            </p>
+
+            <a class="mt-4 btn btn-warning fw-bold" routerLink="/u/current/subscriptions">View List Of Current
+              Subscriptions</a>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

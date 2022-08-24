@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LevelThreeComponent implements OnInit {
 
-  url: string = 'https://administrator.goodyellowco.com/api/level/three/'
+  //url: string = 'https://administrator.goodyellowco.com/api/level/three/'
+  url: string = 'https://administrator.goodyellowco.com/api/claudia/level/three/subscribers/brands/'
   loading: boolean = false
   leaderboards: any = []
   id: string | null = ''

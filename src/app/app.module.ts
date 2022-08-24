@@ -1,6 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, POSITION,
+  PB_DIRECTION, } from "ngx-ui-loader";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateVendorComponent } from './component/create-vendor/create-vendor.component';
@@ -70,8 +72,22 @@ import { DiscountListComponent } from './component/discount-list/discount-list.c
 import { DiscountListDetailsComponent } from './component/discount-list-details/discount-list-details.component';
 import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-details-level-two/discount-list-details-level-two.component';
 import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
+import { ShippingCostComponent } from './component/shipping-cost/shipping-cost.component';
 
-
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: "red",
+  bgsPosition: POSITION.bottomCenter,
+  bgsSize: 40,
+  bgsType: SPINNER.rectangleBounce, // background spinner type
+  fgsType: SPINNER.ballScaleMultiple, // foreground spinner type
+  pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
+  pbThickness: 6, // progress bar thickness FFE01D
+  fgsColor: "#FFE01D",
+  fgsSize: 100,
+  // logoUrl: 'assets/logo.png',
+  pbColor: "#6DFBDB",
+  // logoSize: 80
+};
 
 @NgModule({
   declarations: [
@@ -137,7 +153,8 @@ import { DiscountListDetailsLevelThreeComponent } from './component/discount-lis
     DiscountListComponent,
     DiscountListDetailsComponent,
     DiscountListDetailsLevelTwoComponent,
-    DiscountListDetailsLevelThreeComponent
+    DiscountListDetailsLevelThreeComponent,
+    ShippingCostComponent
   ],
   imports: [
     BrowserModule,
@@ -146,6 +163,8 @@ import { DiscountListDetailsLevelThreeComponent } from './component/discount-lis
     HttpClientModule,
     BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({showForeground: true}),
 
 
 

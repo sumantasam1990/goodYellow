@@ -10,19 +10,24 @@
 
           <ul class="mt-4 text-left" *ngIf="leaderboards && leaderboards.length > 0">
             <li *ngFor="let item of leaderboards" class="text-left mb-2">
-              <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none"
-                routerLink="/discover/brands/level/three/{{ item.id }}">{{ item.lb_two_name }}</a>
+              <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none font_family"
+                routerLink="/discover/brands/level/three/{{ item.Id }}">{{ item.lb_two_name }}</a>
 
-              <div *ngIf="item.discount > 5 && item.discount < 15" class="discount-light-green-level">Highest Discount:
-                {{  item.discount }}%
+              <div class="text-secondary">
+                Subscribers: {{ item.buyers_no ?? 0 }}
               </div>
 
-              <div *ngIf="item.discount > 16 && item.discount < 30" class="discount-light-green-second-level">Highest
+              <div *ngIf="item.discount >= 5 && item.discount <= 15" class="discount-light-green-level">Highest
                 Discount:
                 {{  item.discount }}%
               </div>
 
-              <div *ngIf="item.discount > 30 && item.discount < 50" class="discount-dark-green-second-level">Highest
+              <div *ngIf="item.discount >= 16 && item.discount <= 30" class="discount-light-green-second-level">Highest
+                Discount:
+                {{  item.discount }}%
+              </div>
+
+              <div *ngIf="item.discount >= 30 && item.discount <= 50" class="discount-dark-green-second-level">Highest
                 Discount:
                 {{  item.discount }}%
               </div>

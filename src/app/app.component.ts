@@ -58,20 +58,21 @@ export class AppComponent implements OnInit {
     private router: Router,
     private auth: AuthServiceService,
   ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
-          this.loading = true;
-          console.log('loading start')
+          // this.loading = true;
+          // console.log('loading start')
           break;
         }
 
         case event instanceof NavigationEnd:
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
-          this.loading = false;
+          // this.loading = false;
+          // console.log('loading end')
           break;
         }
         default: {

@@ -17,34 +17,52 @@
             </h4>
 
             <p>&nbsp;</p>
+            <hr />
 
-            <div class="row mb-3 mt-3" *ngFor="let cart of carts.data">
+            <div class="row mb-3 mt-4" *ngFor="let cart of carts.data">
               <div class="col-md-3">
-                <h2 class="fs-5">{{ cart.brand_name }}</h2>
+                <h2 class="fs-5">
+                  <a class="text-dark fw-bold" routerLink="/storefront/{{ cart.company_slug }}">
+                    {{ cart.brand_name }}
+                  </a>
+
+                </h2>
               </div>
               <div class="col-md-3">
                 <h2 class="fs-5 fw-bold">
                   Total:
-                  ${{ cart.plus_price }}
+                  ${{ cart.plus_price }} <p class="fs-6 fw-bold"> + ${{ cart?.total_shipping_cost }} Shipping</p>
                 </h2>
               </div>
               <div class="col-md-3">
-                <a class="btn btn-warning" href="">Checkout</a>
+                <a class="btn btn-warning" routerLink="/u/checkout/{{ cart.brand_id }}">Checkout</a>
               </div>
               <div class="col-md-3">
 
-                <a class="text-danger" href="">Remove all</a>
+                <a class="text-danger" (click)="removeAll(cart.brand_id)">Remove all</a>
               </div>
 
               <div style="margin-left: 25px;" class="row mt-2" *ngFor="let item of cart.products; let i = index;">
                 <div class="col-md-6">
                   <ul>
-                    <li>{{ i+1 }} . {{ item.product }}</li>
+                    <li>
+                      <a class="text-primary" routerLink="/u/product/{{ item.p_uniq }}">
+                        {{ i+1 }} . {{ item.product }}
+                      </a>
+                      <p *ngIf="item.var_size || item.var_color" class="fw-bold">
+                        -- Size: {{ item.var_size }} Color: {{ item.var_color }}
+                      </p>
+
+                      <!-- <p class="fw-bold fs-6 font_family text-dark">+ $
+                        {{ item.shipping_cost > 0 ? item.shipping_cost : 'Free' }}
+                        Shipping
+                      </p> -->
+                    </li>
                   </ul>
                 </div>
                 <div class="col-md-6">
 
-                  <a class="text-danger" href="">Remove</a>
+                  <!-- <a class="text-danger" (click)="removeOne(item.p_uniq)">Remove</a> -->
                 </div>
               </div>
 
@@ -55,8 +73,9 @@
 
             <div class="row">
               <div class="col-md-12 text-center">
-                <h2 class="fs-4 fw-bold">
-                  Grand Total: ${{ carts.grand_total ? carts.grand_total : '0' }}
+                <h2 class="fs-5 fw-bold">
+                  Grand Total: ${{ carts.grand_total ? carts.grand_total : '0' }} <span class="fs-6">+ Shipping
+                    Cost</span>
                 </h2>
               </div>
             </div>

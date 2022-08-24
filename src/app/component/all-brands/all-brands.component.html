@@ -1,16 +1,22 @@
+<!-- <div class="loading" *ngIf="loadingg">
+  <img src="../assets/loading.svg">
+</div> -->
 <div class="container-fluid lb_brands">
   <div class="container h-100">
     <div class="row h-100">
       <div class="col-md-10 mx-auto p-2 d-flex _logbox">
         <div class="boxx mt-4">
           <h4 class="fs-5 fw-bold mb-5">
-            {{ brands[0].leaderboard }}
+            {{ brands[0]?.leaderboard }}
           </h4>
           <h2 class="mb-1">
             <span class="fw-bold fs-4 heading">The Brands</span>
             <!-- <span class="fs-6">&nbsp; Discover brands who have had the most sales on Good Yellow up to today.</span> -->
           </h2>
+
           <div style="border-bottom: 5px solid #FFE01D; width: 40%; "></div>
+
+
 
           <div class="row mt-4 mt-4">
             <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4 col-6 loop" *ngFor="let brand of brands">
