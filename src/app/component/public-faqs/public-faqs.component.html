@@ -16,7 +16,8 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a routerLink="/vendor-storefront" class="btn btn-warning me-md-2" type="button">Return To Storefront</a>
+            <a routerLink="/vendor-storefront" class="btn btn-warning me-md-2" type="button"
+              *ngIf="!buyer_seller_id">Return To Storefront</a>
           </div>
 
         </div>

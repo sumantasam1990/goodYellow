@@ -23,6 +23,9 @@ export class StorefrontComponent implements OnInit {
 
   deleteDiscounturl: any = 'https://administrator.goodyellowco.com/api/u/vendor/product/discount/delete/'
 
+  editBrandNameUrl: any = 'https://administrator.goodyellowco.com/api/vendor/change/brand/name/'
+  editBrandSlugUrl: any = 'https://administrator.goodyellowco.com/api/vendor/change/brand/slug/'
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -132,6 +135,50 @@ export class StorefrontComponent implements OnInit {
      });
     }
 
+  }
+
+  async edit_name() {
+    const { value: brand } = await Swal.fire({
+      title: 'Change Brand Name',
+      input: 'text',
+      inputLabel: 'Your New Brand Name',
+      showCancelButton: true,
+      confirmButtonText: 'Save Changes'
+      //inputPlaceholder: 'Enter your email address'
+    })
+
+    if (brand) {
+      this.http.get(this.editBrandNameUrl + this.uid + '/' + brand).subscribe((res: any) => {
+        if(res.err) {
+          alert(res.err)
+        }
+       this.getVendorInfo()
+      },(err) => {
+        alert(err.err)
+      })
+    }
+  }
+
+  async edit_slug() {
+    const { value: brand } = await Swal.fire({
+      title: 'Change Brand URL',
+      input: 'text',
+      inputLabel: 'Your New Brand URL',
+      showCancelButton: true,
+      confirmButtonText: 'Save Changes'
+      //inputPlaceholder: 'Enter your email address'
+    })
+
+    if (brand) {
+      this.http.get(this.editBrandSlugUrl + this.uid + '/' + brand).subscribe((res: any) => {
+        if(res.err) {
+          alert(res.err)
+        }
+       this.getVendorInfo()
+      },(err) => {
+        alert(err.err)
+      })
+    }
   }
 
 }

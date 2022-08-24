@@ -26,11 +26,14 @@
                   <tr>
 
                     <th>#</th>
+                    <th>Date</th>
                     <th style="width: 200px;">Product Name</th>
 
-                    <th>Product Price (Including Shipping)</th>
+                    <th>Product Price</th>
+
                     <!-- <th>Order Total</th> -->
                     <th>Order Quantity</th>
+                    <th>Ship To</th>
                     <th>Shipping Address</th>
                     <th>Receipt URL</th>
 
@@ -46,14 +49,17 @@
                   <tr *ngFor="let order of orders; let i = index;">
 
                     <td>{{ i+1 }}</td>
+                    <td class="fw-bold">{{ order.created_at | date }}</td>
                     <td style="width: 200px;">
                       <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
                         {{ order.p_name }}
                       </a>
                     </td>
-                    <td>${{ order.product_discount_price }}</td>
+                    <td>${{ order.product_discount_price }} <p>Ship cost: {{ order.order_shipping_cost }}</p>
+                    </td>
                     <!-- <td>${{ order.order_price }}</td> -->
                     <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.full_name }}</td>
                     <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
                     <td>
                       <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download
@@ -90,11 +96,13 @@
                   <tr>
 
                     <th>#</th>
+                    <th>Date</th>
                     <th style="width: 200px;">Product Name</th>
 
                     <th>Product Price</th>
                     <!-- <th>Order Total</th> -->
                     <th>Order Quantity</th>
+                    <th>Ship To</th>
                     <th>Shipping Address</th>
                     <th>Receipt URL</th>
 
@@ -110,14 +118,17 @@
                   <tr *ngFor="let order of shipped_orders; let i = index;">
 
                     <td>{{ i+1 }}</td>
+                    <td class="fw-bold">{{ order.created_at | date }}</td>
                     <td style="width: 200px;">
                       <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
                         {{ order.p_name }}
                       </a>
                     </td>
-                    <td>${{ order.product_discount_price }}</td>
+                    <td>${{ order.product_discount_price }} <p>Ship cost: {{ order.order_shipping_cost }}</p>
+                    </td>
                     <!-- <td>${{ order.order_price }}</td> -->
                     <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.full_name }}</td>
                     <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
                     <td>
                       <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download
@@ -154,11 +165,13 @@
                   <tr>
 
                     <th>#</th>
+                    <th>Date</th>
                     <th style="width: 200px;">Product Name</th>
 
                     <th>Product Price</th>
                     <!-- <th>Order Total</th> -->
                     <th>Order Quantity</th>
+                    <th>Ship To</th>
                     <th>Shipping Address</th>
                     <th>Receipt URL</th>
 
@@ -174,14 +187,17 @@
                   <tr *ngFor="let order of cancelled_orders; let i = index;">
 
                     <td>{{ i+1 }}</td>
+                    <td class="fw-bold">{{ order.created_at | date }}</td>
                     <td style="width: 200px;">
                       <a class="text-primary" routerLink="/u/product/{{ order.p_uniq }}">
                         {{ order.p_name }}
                       </a>
                     </td>
-                    <td>${{ order.product_discount_price }}</td>
+                    <td>${{ order.product_discount_price }} <p>Ship cost: {{ order.order_shipping_cost }}</p>
+                    </td>
                     <!-- <td>${{ order.order_price }}</td> -->
                     <td>{{ order.order_quantity }}</td>
+                    <td>{{ order.full_name }}</td>
                     <td>{{ order.address }} {{ order.phone }} {{ order.email }}</td>
                     <td>
                       <a class="btn btn-warning btn-sm" href="{{ order.tran_receipt_url }}" target="_blank">Download

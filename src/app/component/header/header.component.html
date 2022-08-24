@@ -10,9 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a routerLink="/all/brands" class="nav-link">All Storefronts</a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/discover/brands">Discover Brands</a>
@@ -74,7 +74,7 @@
           <a (click)="signout_buyer()" class="btn btn-secondary">Sign Out</a>
         </li>
         <li class="nav-item" *ngIf="!changeBuyerHeader && !changeHeader">
-          <a (click)="signin_buyer()" class="btn btn-secondary">Sign In</a>
+          <a (click)="signin_buyer()" class="btn btn-secondary">Member Sign In</a>
         </li>
 
 

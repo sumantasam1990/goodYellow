@@ -14,6 +14,13 @@ import { SubscriptionsPastComponent } from './subscriptions-past/subscriptions-p
 import { SubscriptionsCreditsComponent } from './subscriptions-credits/subscriptions-credits.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { DiscountproductComponent } from './discountproduct/discountproduct.component';
+import { PublicFoundersComponent } from '../component/public-founders/public-founders.component';
+import { PublicPeopleComponent } from '../component/public-people/public-people.component';
+import { PublicStoryComponent } from '../component/public-story/public-story.component';
+import { PublicFaqsComponent } from '../component/public-faqs/public-faqs.component';
+import { PublicBrandVideoComponent } from '../component/public-brand-video/public-brand-video.component';
+import { PublicBrandPhotosComponent } from '../component/public-brand-photos/public-brand-photos.component';
 
 
 const routes: Routes = [
@@ -56,6 +63,27 @@ const routes: Routes = [
   {
     path: 'checkout/:uid', component: CheckoutComponent
   },
+  {
+    path: 'discount/:id', component: DiscountproductComponent
+  },
+  {
+    path: 'vendor/public/founders/:uid', component: PublicFoundersComponent,
+  },
+  {
+    path: 'vendor/public/people/:uid', component: PublicPeopleComponent
+  },
+  {
+    path: 'vendor/public/story/:uid', component: PublicStoryComponent
+  },
+  {
+    path: 'vendor/public/faqs/:uid', component: PublicFaqsComponent
+  },
+  {
+    path: 'vendor/public/brand/video/:uid', component: PublicBrandVideoComponent
+  },
+  {
+    path: 'vendor/public/brand/photos/:uid', component: PublicBrandPhotosComponent
+  }
 
 ];
 

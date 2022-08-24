@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
   card_exp_month: string = ''
   card_exp_year: string = ''
   card_cvv: string = ''
+  full_name: string = ''
 
   url: string = 'https://administrator.goodyellowco.com/api/buyer/checkout'
   uid: string | null = ''
@@ -43,8 +44,6 @@ export class CheckoutComponent implements OnInit {
   async getData() {
     await this.http.get(this.getUrl + this.uid + '/' + localStorage.getItem('b_u_id')).pipe(delay(250), retry(4)).toPromise().then((res: any) => {
 
-      console.log(res)
-
       if(res.status == 0) {
         this.disabled = true
         Swal.fire({
@@ -56,6 +55,11 @@ export class CheckoutComponent implements OnInit {
         })
       }
       this.brands = res
+
+      this.address = res.ship_addr.address
+      this.full_name = res.ship_addr.full_name
+      this.phone = res.ship_addr.phone
+      this.email = res.ship_addr.email
     });
   }
 
@@ -63,12 +67,13 @@ export class CheckoutComponent implements OnInit {
     this.disabled = true
 
     if(localStorage.getItem('b_u_id') != '' && this.uid != '') {
-      if(this.address != '' && this.phone != '' && this.email != '') {
+      if(this.address != '' && this.phone != '' && this.email != '' && this.full_name != '') {
         const myheader = new HttpHeaders();
         //myheader.set('Access-Control-Allow-Origin', '*');
         myheader.set('Content-Type', 'application/x-www-form-urlencoded');
 
         const formData = new FormData();
+        formData.append('full_name', this.full_name);
         formData.append('address', this.address);
         formData.append('phone', this.phone);
         formData.append('email', this.email);
@@ -104,6 +109,13 @@ export class CheckoutComponent implements OnInit {
 
 
 
+        }, (err) => {
+          Swal.fire({
+            title: 'Error!',
+            text: err.message,
+            icon: 'error'
+          })
+          this.disabled = false
         });
       } else {
         Swal.fire({

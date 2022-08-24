@@ -14,9 +14,6 @@
                 routerLink="/leaderboard/brands/list/{{ item.slug }}">{{ item.lb_three_name }}</a>
 
 
-              <div class="text-secondary">
-                Subscribers: {{ item.buyers_no ?? 0 }}
-              </div>
 
               <div *ngIf="item.discount >= 5 && item.discount <= 15" class="discount-light-green-level">Highest
                 Discount:
@@ -34,6 +31,10 @@
               </div>
 
               <div *ngIf="item.discount > 50" class="discount-dark-green-level">Highest Discount: {{  item.discount }}%
+              </div>
+
+              <div class="text-secondary fs-6 font_family mt-2">
+                {{ item.buyers_no ?? 0 }} Subscribers
               </div>
 
 

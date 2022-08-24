@@ -1,0 +1,65 @@
+<div class="container-fluid mb-4" style="margin-top: 50px;">
+  <div class="container h-100 mt-4">
+    <div class="row mx-auto">
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+        <img ngClass="img-one" *ngIf="imagess.length > 0"
+          [src]="'https://administrator.goodyellowco.com/uploads/'+imagess[0].url" class="img-fluid">
+
+        <div class="row mb-4" *ngIf="imagess.length > 0">
+          <div class="col-6" *ngFor="let item of imagess">
+            <img ngClass="imgs" [src]="'https://administrator.goodyellowco.com/uploads/'+item.url"
+              class="mt-2 img-fluid">
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-5">
+        <h2 class="fs-4 fw-bold heading">{{ product.name }}</h2>
+        <h3><a class=" text-warning fw-bold text-decoration-none" style="cursor: pointer;"
+            routerLink="/storefront/{{ product.brand }}">
+            {{ product.brand }}</a>
+        </h3>
+        <h2 class="fw-normal fs-4 mt-2">${{ price }}</h2>
+        <h2 class="fw-bold fs-5" style="margin-top: 6px;">Current Discount: {{ discount }}% </h2>
+        <!-- <h4 class="fw-bold" style="margin-top: -14px;" *ngIf="shipping_cost != '0' || shipping_cost != ''">Shipping:
+          ${{ shipping_cost }}
+        </h4> -->
+        <!-- <h4 class="fw-bold" style="margin-top: -14px;" *ngIf="shipping_cost == '0' || shipping_cost == ''">Shipping is
+          <span class="text-warning fw-bold">Free</span>.
+        </h4> -->
+        <h1 class="fw-bold fs-2 mt-3">
+          ${{ discount_price }}
+        </h1>
+        <h3 class="fw-bold fs-5">0 Sales</h3>
+        <h3 class="fw-bold fs-5">0 Different Customers</h3>
+        <h3 *ngIf="product.exclu_discount" style="border-bottom: 4px solid #FFE01D; width: 230px;">Exclusive Good Yellow
+          Discount </h3>
+        <h3 *ngIf="product.exclus_product" style="margin-top: -14px; border-bottom: 4px solid #FFE01D; width: 200px;">
+          Exclusively On Good Yellow</h3>
+
+        <div class="row mt-4">
+          <!-- <div class="col-5">
+            <label>Quantity:</label>
+            <input [disabled]="disabled" type="number" class="form-control" placeholder="Choose Quantity"
+              [(ngModel)]="quantity">
+          </div> -->
+          <div class="col-12">
+            <div class="d-grid gap-2 col-5">
+              <button [disabled]="disabled" type="button" class="btn btn-warning mt-3" (click)="getDiscount()">Get
+                Discount Code</button>
+            </div>
+
+          </div>
+        </div>
+        <!-- <p style="text-decoration: underline; margin-top: 30px;">Important Details</p>
+        <p class="mt-3">
+          {{ product.important_details }}
+        </p> -->
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>

@@ -265,6 +265,15 @@ textarea {
 
 
 @media only screen and (min-width: 120px) and (max-width: 900px) {
+
+  /* .discount-light-green-second-level {
+    width: 100px;
+  }
+
+  .discount-light-green-level {
+    width: 100px;
+  } */
+
   .cover {
     height: 120px !important;
 

@@ -8,10 +8,10 @@
           <div style="border-bottom: 5px solid #FFE01D; width: 400px; margin: 0 auto;"></div>
 
 
-          <div class="mt-5 text-center" *ngIf="data.length > 0">
+          <div class="mt-5 text-left" *ngIf="data.length > 0">
             <p *ngFor="let item of data">
               <a class="btn btn-warning btn-lg fw-bold" routerLink="/storefront/{{ item.slug }}">{{ item.brand }}</a>
-              <span style="margin-left: 12px;" class="fs-5 fw-bold text-dark">{{ item.left }} left</span>
+              <span style="margin-left: 12px; float:right;" class="fs-5 fw-bold text-dark">{{ item.left }} left</span>
             </p>
 
           </div>

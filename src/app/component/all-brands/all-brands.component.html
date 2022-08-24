@@ -4,7 +4,7 @@
 <div class="container-fluid lb_brands">
   <div class="container h-100">
     <div class="row h-100">
-      <div class="col-md-10 mx-auto p-2 d-flex _logbox">
+      <div class="col-md-12 mx-auto p-2 d-flex _logbox">
         <div class="boxx mt-4">
           <h4 class="fs-5 fw-bold mb-5">
             {{ brands[0]?.leaderboard }}
@@ -14,12 +14,12 @@
             <!-- <span class="fs-6">&nbsp; Discover brands who have had the most sales on Good Yellow up to today.</span> -->
           </h2>
 
-          <div style="border-bottom: 5px solid #FFE01D; width: 40%; "></div>
+          <div style="border-bottom: 5px solid #FFE01D; width: 200px; "></div>
 
 
 
           <div class="row mt-4 mt-4">
-            <div class="col-md-4 col-sm-6 col-xs-6 col-lg-4 col-6 loop" *ngFor="let brand of brands">
+            <div class="col-md-3 col-sm-6 col-xs-6 col-lg-3 col-6 loop" *ngFor="let brand of brands">
               <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}">
                 <div class="album">
 

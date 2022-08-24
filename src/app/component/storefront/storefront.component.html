@@ -29,6 +29,13 @@
       </div>
       <div class="col-md-9 mt-4 main_part">
         <h1 class="fs-1 fw-bold heading brandName">{{ vendorData.brand }} </h1>
+
+        <div style="float: right;">
+          <p class="fs-6"><a class="btn btn-sm btn-outline-dark" (click)="edit_name()">✒️ Change brand name</a></p>
+          <p class="fs-6"><a class="btn btn-sm btn-outline-dark" (click)="edit_slug()">✒️ Change brand Url</a></p>
+        </div>
+
+
         <p class="mt-2 fs-6 text-secondary">{{ vendorData.total_subscribers }} subscribers</p>
 
         <p class="badge bg-danger fs-6">{{ vendorData.private === 1 ? '🔒 Private' : '' }}</p>
@@ -89,7 +96,7 @@
 
     <div class="row mb-4" style="margin-top: 80px;">
       <div class="col-md-12">
-        <h2 class="fs-4 fw-bold heading"> The Products ( {{ vendorData.products.length }} ) </h2>
+        <h2 class="fs-4 fw-bold heading"> The Products ( {{ vendorData?.products?.length }} ) </h2>
         <p class="add_prod"><a routerLink="/create-product" class="btn btn-warning mt-3 btn-lg ">Add Product</a>
         </p>
       </div>
@@ -117,7 +124,7 @@
 
     <div class="row mb-4 mt-5" style="margin-top: 80px;">
       <div class="col-md-12">
-        <h2 class="fs-4 fw-bold heading"> Discount Codes ( {{ vendorData.products.length }} ) </h2>
+        <h2 class="fs-4 fw-bold heading"> Discount Codes ( {{ vendorData?.products?.length }} ) </h2>
         <p class="add_prod"><a routerLink="/product/discount/add" class="btn btn-warning mt-3 btn-lg ">Add Discount
             Code</a>
         </p>

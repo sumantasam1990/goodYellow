@@ -76,27 +76,27 @@ export class PreviewStorefrontComponent implements OnInit {
   }
 
   public_founders() {
-    this.router.navigate(['vendor/public/founders'])
+    this.router.navigate(['u/vendor/public/founders/', this.slug])
   }
 
   public_people() {
-    this.router.navigate(['vendor/public/people'])
+    this.router.navigate(['u/vendor/public/people/', this.slug])
   }
 
   public_story() {
-    this.router.navigate(['vendor/public/story'])
+    this.router.navigate(['u/vendor/public/story/', this.slug])
   }
 
   public_faqs() {
-    this.router.navigate(['vendor/public/faqs'])
+    this.router.navigate(['u/vendor/public/faqs/', this.slug])
   }
 
   public_brand_video() {
-    this.router.navigate(['vendor/public/brand/video'])
+    this.router.navigate(['u/vendor/public/brand/video/', this.slug])
   }
 
   public_brand_photo() {
-    this.router.navigate(['vendor/public/brand/photos'])
+    this.router.navigate(['u/vendor/public/brand/photos/', this.slug])
   }
 
   async subscribe() {

@@ -62,6 +62,7 @@ import { DiscountListDetailsComponent } from './component/discount-list-details/
 import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-details-level-two/discount-list-details-level-two.component';
 import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
 import { ShippingCostComponent } from './component/shipping-cost/shipping-cost.component';
+import { HomePageComponent } from './component/home-page/home-page.component';
 
 const routes: Routes = [
   // {
@@ -70,8 +71,11 @@ const routes: Routes = [
   //   component: PagenotfoundComponent
   // },
   {
-    path: '', redirectTo: 'partners', pathMatch: 'full',
+    path: '', component: HomePageComponent
   },
+  // {
+  //   path: '', redirectTo: 'partners', pathMatch: 'full',
+  // },
   {
     path: 'partners', component: VendorHomeComponent, data: {state:  'home'}, canActivate: [LoginOrNotGuard]
   },

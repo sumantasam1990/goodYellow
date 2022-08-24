@@ -28,7 +28,7 @@
             routerLink="/storefront/{{ product?.slug }}">
             {{ product?.brand }}</a>
         </h3>
-        <h2 class="fw-normal fs-4 mt-2">${{ price }}</h2>
+        <h2 class="fw-normal fs-4 mt-2" style="text-decoration: line-through;">${{ price }}</h2>
         <h2 class="fw-bold fs-5" style="margin-top: 6px;">Current Discount: {{ discount }}% </h2>
 
 
@@ -65,10 +65,12 @@
         </h1>
         <!-- <h3 class="fw-bold">23 Sales</h3>
         <h3 class="fw-bold" style="margin-top: -14px;">18 Different Customers</h3> -->
-        <h3 class="fs-6" *ngIf="product?.exclu_discount" style="border-bottom: 4px solid #FFE01D; width: 230px;">
+        <h3 class="fs-6 mt-3" *ngIf="product?.exclu_discount == 'true'"
+          style="border-bottom: 4px solid #FFE01D; width: 230px;">
           Exclusive Good Yellow
           Discount </h3>
-        <h3 class="fs-6" *ngIf="product?.exclus_product" style="border-bottom: 4px solid #FFE01D; width: 200px;">
+        <h3 class="fs-6" *ngIf="product?.exclus_product == 'true'"
+          style="border-bottom: 4px solid #FFE01D; width: 200px;">
           Exclusively On Good Yellow</h3>
 
         <div class="mt-4" *ngIf="subscribed">

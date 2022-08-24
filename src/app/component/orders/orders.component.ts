@@ -35,23 +35,24 @@ export class OrdersComponent implements OnInit {
 
   async getOrders() {
     await this.http.get(this.url + localStorage.getItem('u_id')).pipe(delay(250), retry(3)).toPromise().then((res: any) => {
-      console.log(res)
+
       this.orders = res
     })
 
     await this.http.get(this.shipped_url + localStorage.getItem('u_id')).pipe(delay(250), retry(3)).toPromise().then((res: any) => {
-      console.log(res)
+
       this.shipped_orders = res
     })
 
     await this.http.get(this.cancel_url + localStorage.getItem('u_id')).pipe(delay(250), retry(3)).toPromise().then((res: any) => {
-      console.log(res)
+
       this.cancelled_orders = res
     })
   }
 
   async order_status_change(order_no: string) {
     await this.http.get(this.orderChangeUrl + localStorage.getItem('u_id') + '/' + order_no + '/' + this.order_status).pipe(delay(250), retry(3)).toPromise().then((res: any) => {
+      this.order_status = ''
       this.getOrders()
     })
   }

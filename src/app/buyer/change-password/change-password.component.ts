@@ -15,7 +15,7 @@ export class ChangePasswordComponent implements OnInit {
   password: string = ''
   old_password: string = ''
   conf_password: string = ''
-  url: any = ''
+  url: any = 'https://administrator.goodyellowco.com/api/buyer/email/change/password/save'
   token: string | null = ''
 
   constructor(
@@ -25,7 +25,7 @@ export class ChangePasswordComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.token = this.route.snapshot.paramMap.get('token')
+    //this.token = this.route.snapshot.paramMap.get('token')
   }
 
   save() {
@@ -36,15 +36,18 @@ export class ChangePasswordComponent implements OnInit {
       myheader.set('Content-Type', 'application/x-www-form-urlencoded');
 
       const formData = new FormData();
-      formData.append('password', this.conf_password)
-      formData.append('old_password', this.old_password)
-      formData.append('token', this.token ?? '')
+      formData.append('new', this.conf_password)
+      formData.append('old', this.old_password)
+      formData.append('bid', localStorage.getItem('b_u_id') ?? '')
+
 
       this.http.post<any>(this.url, formData, {
         headers: myheader
       }).subscribe(response => {
          this.disabled = false
          this.password = ''
+         this.old_password = ''
+         this.conf_password = ''
         if(response.succ) {
 
           Swal.fire({
@@ -52,19 +55,24 @@ export class ChangePasswordComponent implements OnInit {
              text:   response.succ,
              icon: 'success'
          }).then(r => {
-          this.router.navigate(['login'])
+
          });
 
 
         } else {
           Swal.fire({
-             title: 'Hurray!!',
-             text:   response.msg,
+             title: 'Error!!',
+             text:   response.err,
              icon: 'error'
          }).then(r => {
-          this.router.navigate(['login'])
+
          });
         }
+      }, (err) => {
+        Swal.fire({
+        text: err.message(),
+        icon: 'error'
+      })
       });
     } else {
       Swal.fire({
