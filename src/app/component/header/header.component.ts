@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -14,17 +15,26 @@ export class HeaderComponent implements OnInit {
   changeBuyerHeader: boolean = false
   loggedInBuyerId: string | null = localStorage.getItem('b_u_id') // buyer_id
 
+  url: string = 'https://administrator.goodyellowco.com/api/buyer/email/verification/check/'
+  emailVerify: any
+
+
+
   constructor(
     private router: Router,
     private auth: AuthServiceService,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
+
+    this.buyerEmailVerificationMessage()
 
     this.auth.getEmitter().subscribe((obj) => {
       if(obj.token && obj.token != '') {
         this.changeHeader = true
       } else if(obj.buyer_token && obj.buyer_token != '') {
+        this.buyerEmailVerificationMessage()
         this.changeBuyerHeader = true
       } else {
         this.changeHeader = false
@@ -40,6 +50,23 @@ export class HeaderComponent implements OnInit {
       this.changeHeader = false
       this.changeBuyerHeader = false
     }
+  }
+
+
+
+  async buyerEmailVerificationMessage() {
+    console.log('bal')
+    await this.http.get(this.url + localStorage.getItem('b_u_id')).pipe().toPromise().then((res: any) => {
+
+      if(res.stat == 0) {
+        this.emailVerify = res.info
+      } else {
+        this.emailVerify = ''
+      }
+
+    }).catch(err => {
+      alert(err.message)
+    })
   }
 
   signin() {

@@ -39,9 +39,9 @@
 
               </div>
 
-              <a class="text-decoration-none text-dark" routerLink="/storefront/{{ brand.slug }}"
+              <a class="text-decoration-none text-dark mt-3" routerLink="/storefront/{{ brand.slug }}"
                 *ngIf="brand.private === 0">
-                <h2 class="fw-bold fs-5 mb-2" style="font-family: HeroNewExtraBlack !important;">{{ brand.company }}
+                <h2 class="fw-bold fs-4 mb-2 font_family mt-3">{{ brand.company }}
                 </h2>
               </a>
 
@@ -52,29 +52,29 @@
                 </h2>
               </a>
 
-              <h4 class="fw-bold HeroNew fs-6 mb-1" *ngIf="brand.dummy == '0'">{{ brand.sales }} Sales</h4>
-              <h4 class="fw-bold HeroNew fs-6" *ngIf="brand.dummy == '0'">{{ brand.customers }} Different Customers</h4>
+              <!-- <h4 class="fw-bold HeroNew fs-6 mb-1" *ngIf="brand.dummy == '0'">{{ brand.sales }} Sales</h4>
+              <h4 class="fw-bold HeroNew fs-6" *ngIf="brand.dummy == '0'">{{ brand.customers }} Different Customers</h4> -->
 
-              <!-- <div [ngClass]="{'discount-light-green': brand.discount > 5 && brand.discount < 15}"
+              <div [ngClass]="{'discount-dark-green-second': brand.discount > 5 && brand.discount < 15}"
                 *ngIf="brand.dummy == '0' && brand.discount > 5 && brand.discount < 15">
                 Highest
                 Discount:
                 {{ brand.discount }}%
-              </div> -->
+              </div>
 
-              <!-- <div [ngClass]="{'discount-light-green-second': brand.discount > 16 && brand.discount < 30}"
+              <div [ngClass]="{'discount-light-green-second': brand.discount > 16 && brand.discount < 30}"
                 *ngIf="brand.dummy == '0' && brand.discount > 16 && brand.discount < 30">
                 Highest
                 Discount:
                 {{ brand.discount }}%
-              </div> -->
+              </div>
 
-              <!-- <div [ngClass]="{'discount-dark-green-second': brand.discount > 31 && brand.discount < 50}"
+              <div [ngClass]="{'discount-dark-green-second': brand.discount > 31 && brand.discount < 50}"
                 *ngIf="brand.dummy == '0' && brand.discount > 31 && brand.discount < 50">
                 Highest
                 Discount:
                 {{ brand.discount }}%
-              </div> -->
+              </div>
 
               <div [ngClass]="{'discount-dark-green': brand.discount > 50}"
                 *ngIf="brand.dummy == '0' && brand.discount > 50">

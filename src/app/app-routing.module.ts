@@ -272,16 +272,16 @@ const routes: Routes = [
     path: 'discount/list', component: DiscountListComponent
   },
   {
-    path: 'discount/list/details/:id', component: DiscountListDetailsComponent
+    path: 'discount/list/details/:id/:min/:max', component: DiscountListDetailsComponent
+  },
+  // {
+  //   path: 'discount/list/details/:id', component: DiscountListDetailsComponent
+  // },
+  {
+    path: 'discount/list/details/level/two/:id/:oneid/:min/:max', component: DiscountListDetailsLevelTwoComponent
   },
   {
-    path: 'discount/list/details/:id', component: DiscountListDetailsComponent
-  },
-  {
-    path: 'discount/list/details/level/two/:id/:oneid', component: DiscountListDetailsLevelTwoComponent
-  },
-  {
-    path: 'discount/list/details/level/three/:id/:twoid', component: DiscountListDetailsLevelThreeComponent
+    path: 'discount/list/details/level/three/:id/:twoid/:min/:max', component: DiscountListDetailsLevelThreeComponent
   },
 
   //lazy loading for buyer

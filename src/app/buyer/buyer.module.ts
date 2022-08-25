@@ -17,6 +17,7 @@ import { SubscriptionsCreditsComponent } from './subscriptions-credits/subscript
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DiscountproductComponent } from './discountproduct/discountproduct.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 
@@ -37,6 +38,7 @@ import { DiscountproductComponent } from './discountproduct/discountproduct.comp
     PaymentComponent,
     CheckoutComponent,
     DiscountproductComponent,
+    EmailVerificationComponent,
   ],
   imports: [
     CommonModule,

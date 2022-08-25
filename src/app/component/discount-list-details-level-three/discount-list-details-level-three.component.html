@@ -11,6 +11,36 @@
             <li *ngFor="let item of discounts" class="text-left mb-2">
               <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none"
                 routerLink="/leaderboard/brands/list/{{ item.slug }}">{{ item.lb_three_name }}</a>
+
+
+              <div *ngIf="item.ave_discount >= 5 && item.ave_discount <= 15" class="discount-dark-green-second-level">
+                Highest
+                Discount:
+                {{  item.ave_discount | number : '1.1-2' }}%
+              </div>
+
+              <div *ngIf="item.ave_discount >= 16 && item.ave_discount <= 30" class="discount-dark-green-second-level">
+                Highest
+                Discount:
+                {{  item.ave_discount | number : '1.1-2' }}%
+              </div>
+
+              <div *ngIf="item.ave_discount >= 30 && item.ave_discount <= 50" class="discount-dark-green-second-level">
+                Highest
+                Discount:
+                {{  item.ave_discount | number : '1.1-2' }}%
+              </div>
+
+              <div *ngIf="item.ave_discount > 50" class="discount-dark-green-level">
+                Highest Discount: {{  item.ave_discount | number : '1.1-2' }}%
+              </div>
+
+              <!-- <div class="text-secondary fs-6 font_family mt-2">
+                {{ item.buyers_no ?? 0 }} Subscribers
+              </div> -->
+
+
+
             </li>
           </ul>
 

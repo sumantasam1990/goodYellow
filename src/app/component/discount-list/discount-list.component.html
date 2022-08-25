@@ -21,8 +21,8 @@
 
           <ul class="mt-4 text-left" *ngIf="discounts && discounts.length > 0">
             <li *ngFor="let item of discounts" class="text-left mb-2">
-              <a style="text-align: left;" class="text-left fs-4 btn btn-link text-dark text-decoration-none"
-                routerLink="/discount/list/details/{{ item.discount_uniq }}">{{ item.title }}</a>
+              <a style="text-align: left;" class="text-left fs-5 btn btn-link text-dark text-decoration-none"
+                routerLink="/discount/list/details/{{ item.id }}/{{ item.disc_min }}/{{ item.disc_max }}">{{ item.title }}</a>
             </li>
           </ul>
 

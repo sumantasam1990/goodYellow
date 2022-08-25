@@ -9,10 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DiscountListDetailsLevelTwoComponent implements OnInit {
 
-  url: string = 'https://administrator.goodyellowco.com/api/discount/list/details/two/'
+  // url: string = 'https://administrator.goodyellowco.com/api/discount/list/details/two/'
+
+  url: string = 'https://administrator.goodyellowco.com/api/level/two/discount/'
+
   loading: boolean = false
   discounts: any = []
   id: string | null = ''
+  min: string | null = ''
+  max: string | null = ''
   oneid: string | null = ''
 
   constructor(
@@ -25,7 +30,10 @@ export class DiscountListDetailsLevelTwoComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     this.oneid = this.route.snapshot.paramMap.get('oneid')
 
-    this.http.get(this.url + this.id + '/' + this.oneid).subscribe(res => {
+    this.min = this.route.snapshot.paramMap.get('min')
+    this.max = this.route.snapshot.paramMap.get('max')
+
+    this.http.get(this.url + this.oneid + '/' + this.min + '/' + this.max).subscribe(res => {
       this.discounts = res
     })
   }

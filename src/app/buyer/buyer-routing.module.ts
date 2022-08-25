@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { CartComponent } from './cart/cart.component';
+import { AuthGuardBuyerService as AuthGuard} from '../services/auth-guard-buyer.service';
 
 import { LoginComponent } from './login/login.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
@@ -21,6 +22,7 @@ import { PublicStoryComponent } from '../component/public-story/public-story.com
 import { PublicFaqsComponent } from '../component/public-faqs/public-faqs.component';
 import { PublicBrandVideoComponent } from '../component/public-brand-video/public-brand-video.component';
 import { PublicBrandPhotosComponent } from '../component/public-brand-photos/public-brand-photos.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 const routes: Routes = [
@@ -34,34 +36,37 @@ const routes: Routes = [
     path: 'signup', component: SignupComponent
   },
   {
+    path: 'email/verification/:token', component: EmailVerificationComponent
+  },
+  {
     path: 'product/:id', component: ProductComponent
   },
   {
-    path: 'cart', component: CartComponent
+    path: 'cart', component: CartComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'my/account', component: MyaccountComponent
+    path: 'my/account', component: MyaccountComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'my/orders', component: OrdersComponent
+    path: 'my/orders', component: OrdersComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'change/password', component: ChangePasswordComponent
+    path: 'change/password', component: ChangePasswordComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'change/membership/details', component: ChangeMembershipDetailsComponent
+    path: 'change/membership/details', component: ChangeMembershipDetailsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'current/subscriptions', component: SubscriptionsComponent
+    path: 'current/subscriptions', component: SubscriptionsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'past/subscriptions', component: SubscriptionsPastComponent
+    path: 'past/subscriptions', component: SubscriptionsPastComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'subscriptions/credits/left', component: SubscriptionsCreditsComponent
+    path: 'subscriptions/credits/left', component: SubscriptionsCreditsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'checkout/:uid', component: CheckoutComponent
+    path: 'checkout/:uid', component: CheckoutComponent, canActivate: [AuthGuard]
   },
   {
     path: 'discount/:id', component: DiscountproductComponent
