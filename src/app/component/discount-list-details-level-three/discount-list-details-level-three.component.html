@@ -16,23 +16,23 @@
               <div *ngIf="item.ave_discount >= 5 && item.ave_discount <= 15" class="discount-dark-green-second-level">
                 Highest
                 Discount:
-                {{  item.ave_discount | number : '1.1-2' }}%
+                {{  item.ave_discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.ave_discount >= 16 && item.ave_discount <= 30" class="discount-dark-green-second-level">
                 Highest
                 Discount:
-                {{  item.ave_discount | number : '1.1-2' }}%
+                {{  item.ave_discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.ave_discount >= 30 && item.ave_discount <= 50" class="discount-dark-green-second-level">
                 Highest
                 Discount:
-                {{  item.ave_discount | number : '1.1-2' }}%
+                {{  item.ave_discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.ave_discount > 50" class="discount-dark-green-level">
-                Highest Discount: {{  item.ave_discount | number : '1.1-2' }}%
+                Highest Discount: {{  item.ave_discount | number : '1.0-0' }}%
               </div>
 
               <!-- <div class="text-secondary fs-6 font_family mt-2">

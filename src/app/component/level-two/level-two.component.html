@@ -17,21 +17,21 @@
 
               <div *ngIf="item.discount >= 5 && item.discount <= 15" class="discount-dark-green-second-level">Highest
                 Discount:
-                {{  item.discount | number : '1.1-2' }}%
+                {{  item.discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.discount >= 16 && item.discount <= 30" class="discount-dark-green-second-level">Highest
                 Discount:
-                {{  item.discount | number : '1.1-2' }}%
+                {{  item.discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.discount >= 30 && item.discount <= 50" class="discount-dark-green-second-level">Highest
                 Discount:
-                {{  item.discount | number : '1.1-2' }}%
+                {{  item.discount | number : '1.0-0' }}%
               </div>
 
               <div *ngIf="item.discount > 50" class="discount-dark-green-level">Highest Discount:
-                {{  item.discount | number : '1.1-2' }}%
+                {{  item.discount | number : '1.0-0' }}%
               </div>
 
               <div class="text-secondary fs-6 font_family mt-2">
