@@ -63,6 +63,7 @@ import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-
 import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
 import { ShippingCostComponent } from './component/shipping-cost/shipping-cost.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
+import { SignupSeventhComponent } from './component/signup-seventh/signup-seventh.component';
 
 const routes: Routes = [
   // {
@@ -225,6 +226,9 @@ const routes: Routes = [
   },
   {
     path: 'vendor/signup/sixth', component: SignupSixthComponent, canActivate: [LoginOrNotGuard]
+  },
+  {
+    path: 'vendor/signup/seventh', component: SignupSeventhComponent, canActivate: [LoginOrNotGuard]
   },
   {
     path: 'vendor/forgot/password', component: ForgotpasswordComponent, canActivate: [LoginOrNotGuard]

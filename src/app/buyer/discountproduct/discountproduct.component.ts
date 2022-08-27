@@ -69,7 +69,7 @@ export class DiscountproductComponent implements OnInit {
   async getDiscount() {
 
     this.disabled = true
-    await this.http.get(this.sendUrl + this.product_id).pipe(delay(100), retry(3)).toPromise().then((res: any) => {
+    await this.http.get(this.sendUrl + this.product_id + '/' + localStorage.getItem('b_u_id')).pipe(delay(100), retry(3)).toPromise().then((res: any) => {
 
       this.disabled = false
 

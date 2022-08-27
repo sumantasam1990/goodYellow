@@ -74,6 +74,7 @@ import { DiscountListDetailsLevelTwoComponent } from './component/discount-list-
 import { DiscountListDetailsLevelThreeComponent } from './component/discount-list-details-level-three/discount-list-details-level-three.component';
 import { ShippingCostComponent } from './component/shipping-cost/shipping-cost.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
+import { SignupSeventhComponent } from './component/signup-seventh/signup-seventh.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: "red",
@@ -156,7 +157,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DiscountListDetailsLevelTwoComponent,
     DiscountListDetailsLevelThreeComponent,
     ShippingCostComponent,
-    HomePageComponent
+    HomePageComponent,
+    SignupSeventhComponent
   ],
   imports: [
     BrowserModule,
