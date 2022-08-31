@@ -240,7 +240,7 @@ const routes: Routes = [
     path: 'support', component: SupportComponent
   },
   {
-    path: 'leaderboard/brands/list/:slug', component: LeaderboardBrandsComponent
+    path: 'leaderboard/brands/list/:slug/:min/:max', component: LeaderboardBrandsComponent
   },
   {
     path: 'discover/brands', component: DiscoverBrandsComponent

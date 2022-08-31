@@ -11,7 +11,7 @@
           <ul class="mt-4 text-left" *ngIf="leaderboards && leaderboards.length > 0">
             <li *ngFor="let item of leaderboards" class="text-left mb-2"><a style="text-align: left;"
                 class="text-left btn btn-link text-dark text-decoration-none font_family"
-                routerLink="/leaderboard/brands/list/{{ item.slug }}">{{ item.lb_three_name }}</a>
+                routerLink="/leaderboard/brands/list/{{ item.slug }}/{min}/{max}">{{ item.lb_three_name }}</a>
 
 
 

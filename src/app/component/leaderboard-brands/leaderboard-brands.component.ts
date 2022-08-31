@@ -15,6 +15,9 @@ export class LeaderboardBrandsComponent implements OnInit {
   slug: string | null = ''
   brands: any = []
 
+  min: string | null = ''
+  max: string | null = ''
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -23,6 +26,9 @@ export class LeaderboardBrandsComponent implements OnInit {
 
   async ngOnInit() {
     this.slug = this.route.snapshot.paramMap.get('slug')
+
+    this.min = this.route.snapshot.paramMap.get('min')
+    this.max = this.route.snapshot.paramMap.get('max')
 
     await this.http.get(this.url + this.slug).pipe(delay(200), retry(6)).toPromise().then(res => {
       this.brands = res

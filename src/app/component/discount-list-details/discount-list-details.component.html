@@ -19,7 +19,13 @@
           <ul class="mt-4 text-left" *ngIf="discounts && discounts.length > 0">
             <li *ngFor="let item of discounts" class="text-left mb-2">
               <a style="text-align: left;" class="text-left btn btn-link text-dark text-decoration-none"
-                routerLink="/discount/list/details/level/two/{{ id }}/{{ item.Id }}/{{ min }}/{{ max }}">{{ item.lb_name }}</a>
+                routerLink="/discount/list/details/level/two/{{ id }}/{{ item.Id }}/{{ min }}/{{ max }}">{{ item.lb_name }}
+
+
+                <p class="mt-2 fw-bold text-secondary">( {{ item.category_name }} )</p>
+              </a>
+
+
 
 
               <div *ngIf="item.ave_discount >= 5 && item.ave_discount <= 15" class="discount-dark-green-second-level">
@@ -44,9 +50,9 @@
                 Highest Discount: {{  item.ave_discount }}%
               </div>
 
-              <!-- <div class="text-secondary fs-6 font_family mt-2">
-                {{ item.buyers_no ?? 0 }} Subscribers
-              </div> -->
+              <div class="text-secondary fs-6 font_family mt-2">
+                {{ item.totalsubs ?? 0 }} Subscribers
+              </div>
 
 
 
