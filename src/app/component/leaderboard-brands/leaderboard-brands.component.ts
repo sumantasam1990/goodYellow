@@ -31,7 +31,7 @@ export class LeaderboardBrandsComponent implements OnInit {
     this.min = this.route.snapshot.paramMap.get('min')
     this.max = this.route.snapshot.paramMap.get('max')
 
-    if(this.min != '' && this.max != '') {
+    if(this.min && this.max) {
       await this.http.get(this.discount_url + this.slug + '/' + this.min + '/' + this.max).pipe(delay(200), retry(3)).toPromise().then(res => {
         this.brands = res
       }).catch(error => {
